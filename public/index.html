@@ -124,6 +124,7 @@ rt{font-family:var(--jp);font-size:max(.45em,9px);font-weight:500;letter-spacing
 .w.sel rt,.w.done rt{color:inherit;opacity:.8}
 :focus-visible{outline:3px solid var(--accent);outline-offset:2px}
 @media (prefers-reduced-motion:no-preference){.msg{animation:pop .18s ease-out}@keyframes pop{from{transform:translateY(4px);opacity:.4}to{transform:none;opacity:1}}}
+#app{scroll-margin-top:10px}
 </style>
 </head>
 <body>
@@ -219,7 +220,8 @@ function dots(){
   rb.textContent=review?'問題にもどる':'一覧で確認（全問の答えを一度に見る）';
 }
 
-function render(){ renderInner(); if(ch===44&&!review&&i>=0&&i<data().length&&$app.querySelector('.msg.ng')) data()[i].miss=1; rubify($app); rubify($tabs); }
+var lastK='';
+function render(){ renderInner(); if(i>=0&&!review){var kk=ch+'-'+i; if(kk!==lastK){lastK=kk; try{ if($app.scrollIntoView) $app.scrollIntoView({block:'start'}); }catch(e){}}} else if(i<0) lastK=''; if(ch===44&&!review&&i>=0&&i<data().length&&$app.querySelector('.msg.ng')) data()[i].miss=1; rubify($app); rubify($tabs); }
 function renderInner(){
   dots();
   if(review) return reviewView();
