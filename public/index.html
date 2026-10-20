@@ -128,6 +128,7 @@ rt{font-family:var(--jp);font-size:max(.45em,9px);font-weight:500;letter-spacing
 </style>
 </head>
 <body>
+<nav class="kyoka-nav" aria-label="サイトのもくじへ"><style>.kyoka-nav{display:flex;flex-wrap:wrap;gap:8px;padding:10px 18px;max-width:640px;margin:0 auto;box-sizing:border-box;font:700 14px/1.4 system-ui,'Hiragino Kaku Gothic ProN','Yu Gothic',sans-serif}.kyoka-nav a{color:inherit;text-decoration:none;border:1px solid rgba(128,128,128,.5);background:rgba(128,128,128,.1);border-radius:999px;padding:6px 14px;min-height:36px;display:inline-flex;align-items:center}.kyoka-nav a:focus-visible{outline:3px solid currentColor;outline-offset:2px}</style><a href="https://chugaku.senta1111.workers.dev/">← 中学トップ</a></nav>
 
 <div class="wrap">
   <h1>ゼロから英語</h1>
@@ -978,7 +979,7 @@ document.addEventListener('click',function(e){
   var a=t.dataset.a;
   if(a==='rv'){review=!review;render();return;}
   if(a==='start'){i=0;render();return;}
-  if(a==='next'){i++;render();window.scrollTo(0,0);return;}
+  if(a==='next'){i++;render();return;}
   if(a==='again'){i=-1;st={};render();return;}
   if(a==='shuffle'){mixBuild(ch);i=-1;st={};render();window.scrollTo(0,0);return;}
   if(a==='reset'){st.q1={key:ch+'-'+i,placed:[],msg:'',ok:false,locked:false};render();return;}
