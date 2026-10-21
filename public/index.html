@@ -915,7 +915,7 @@ function q1(){
   var d=data(), q=d[i], n=q.items.length;
   if(!st.q1||st.q1.key!==ch+'-'+i){st.q1={key:ch+'-'+i,placed:[],msg:'',ok:false,locked:false};}
   var s=st.q1;
-  var h='<div class="card"><p class="q">'+secs()[q.sec]+'　問題 '+(i+1)+' ／ '+d.length+'　'+(q.pre?q.pre:'日本語：'+q.tr)+'</p>'+legendHTML(q)+'<div class="slots">';
+  var h='<div class="card"><p class="q">'+secs()[q.sec]+'　問題 '+(i+1)+' ／ '+d.length+'</p><p class="clue">'+(q.pre?q.pre:'日本語：'+q.tr)+'</p>'+legendHTML(q)+'<div class="slots">';
   for(var k=0;k<n;k++){
     var idx=s.placed[k];
     if(idx!==undefined){
