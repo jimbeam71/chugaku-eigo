@@ -1183,30 +1183,32 @@ function qinsFinal(q,mode){
   h+=(mode==='s2'&&q.s2.k==='mark')?'<span class="blank"></span>':'<span>?</span>';
   return '<div class="sent enw">'+h+'</div>';
 }
+function qinsSeq(q){
+  var seq=[q.d], pool=[{t:q.d,c:'D'}];
+  q.qwords.forEach(function(w,k){
+    var cc=(q.qcl||q.cl)[k];
+    if(q.s2.k==='verb'&&k===q.s2.vi){ seq.push(q.s2.ans); q.s2.opts.forEach(function(o){pool.push({t:o,c:cc,vb:1});}); }
+    else { seq.push(w); pool.push({t:w,c:cc}); }
+  });
+  seq.push(q.s2.k==='mark'?q.s2.ans:'?');
+  if(q.s2.k==='mark') q.s2.opts.forEach(function(o){pool.push({t:o,c:'V',mk:1});}); else pool.push({t:'?',c:'V',mk:1});
+  return {seq:seq,pool:pool};
+}
 function qinsQ(){
-  var d=data(), q=d[i], key=ch+'-'+i;
-  if(!st.qi||st.qi.key!==key) st.qi={key:key,stage:1,msg:'',ok:false};
-  var s=st.qi, n=q.words.length;
-  var h='<div class="card"><p class="q">'+secs()[q.sec]+'　問題 '+(i+1)+' ／ '+d.length+'　疑問文にしよう</p>'+
-    '<p class="hint">'+(q.mv?'肯定文を疑問文にします。':'肯定文に <b>'+q.d+'</b> を入れて、疑問文にします。')+(q.mv?'<b>'+q.words[q.mvi]+'</b> をタップして、文の最初に動かそう。':q.s2.k==='verb'?'<b>動詞の形</b>にも注意！':'最後の記号にも注意！')+'</p>'+
+  var d=data(), q=d[i], key=ch+'-'+i, S=qinsSeq(q);
+  if(!st.qi||st.qi.key!==key){ var ord=S.pool.map(function(_,k){return k;}), g=0; do{ ord=shuffle(ord); g++; }while(g<20&&ord.every(function(v,k){return S.pool[v].t===S.seq[k];})); st.qi={key:key,placed:[],ord:ord,msg:'',ok:false}; }
+  var s=st.qi;
+  var h='<div class="card"><p class="q">'+secs()[q.sec]+'　問題 '+(i+1)+' ／ '+d.length+'　疑問文をつくろう</p>'+
+    '<p class="hint">肯定文を<b>疑問文</b>にします。<b>いちばん最初から最後まで</b>、じゅんばんに選んで文をつくろう。</p>'+
     '<p class="clue">日本語：'+q.tr+'</p>';
-  if(s.stage===1&&q.mv){
-    var mh='';
-    q.words.forEach(function(w,k){ mh+='<button class="chip r-'+q.cl[k]+'" data-qm="'+k+'">'+w+'</button> '; });
-    h+='<div class="pool">'+mh+'</div>';
-  } else if(s.stage===1){
-    var sh='';
-    for(var k=0;k<=n;k++){
-      sh+='<button class="gap" data-qg="'+k+'">＋</button>';
-      if(k<n) sh+='<span class="w done '+q.cl[k]+'" style="border-bottom:0;margin:0 1px">'+q.words[k]+'</span>';
-    }
-    h+='<div class="sent enw">'+sh+'<span>.</span></div>';
-  } else if(s.stage===2){
-    h+=qinsFinal(q,'s2');
-  } else h+=qinsFinal(q,'full');
-  if(s.stage===2){
-    h+='<div class="cats" style="grid-template-columns:repeat('+q.s2.opts.length+',minmax(0,1fr))">'+
-      q.s2.opts.map(function(o){return '<button class="cat V pk" data-qo="'+o+'">'+o+'</button>';}).join('')+'</div>';
+  var sh='';
+  s.placed.forEach(function(pi){ var it=S.pool[pi]; sh+='<span class="w done '+it.c+'" style="border-bottom:0;margin:0 1px">'+it.t+'</span>'; });
+  if(!s.ok) sh+='<span class="blank"></span>';
+  h+='<div class="sent enw">'+sh+'</div>';
+  if(!s.ok){
+    var ph='';
+    s.ord.forEach(function(pi){ if(s.placed.indexOf(pi)<0) ph+='<button class="chip r-'+S.pool[pi].c+'" data-qp="'+pi+'">'+S.pool[pi].t+'</button> '; });
+    h+='<div class="pool">'+ph+'</div><button class="next ghost" data-a="qreset">やりなおす</button>';
   }
   if(s.msg) h+='<div class="msg '+(s.ok?'ok':'ng')+'" role="status">'+s.msg+'</div>';
   if(s.ok){
@@ -1388,22 +1390,17 @@ document.addEventListener('click',function(e){
   if(a==='shuffle'){mixBuild(ch);i=-1;st={};render();window.scrollTo(0,0);return;}
   if(a==='reset'){st.q1={key:ch+'-'+i,placed:[],msg:'',ok:false,locked:false};render();return;}
   if(t.dataset.au){playAu(t.dataset.au);return;}
-  if(t.dataset.qg!==undefined && st.qi && st.qi.stage===1){
-    var sq=st.qi,qq=data()[i];
-    if(+t.dataset.qg===0){sq.stage=2;sq.msg='そう！ '+qq.d+' は文の<b>いちばん最初</b>。'+(qq.s2.k==='verb'?'次は、動詞の形を選ぼう。':'次は、最後の記号を選ぼう。');}
-    else sq.msg='そこではないよ。疑問文の <b>'+qq.d+'</b> は、文の<b>いちばん最初</b>に置くよ。';
-    render();return;
-  }
-  if(t.dataset.qm!==undefined && st.qi && st.qi.stage===1){
-    var sm2=st.qi,qm2=data()[i];
-    if(+t.dataset.qm===qm2.mvi){sm2.stage=2;sm2.msg='そう！ <b>'+qm2.words[qm2.mvi]+'</b> を文の最初に出すよ。主語のあとに can は残らないね。次は、最後の記号を選ぼう。';}
-    else sm2.msg='ちがうよ。疑問文では <b>'+qm2.words[qm2.mvi]+'</b> を文の最初に動かすよ。';
-    render();return;
-  }
-  if(t.dataset.qo!==undefined && st.qi && st.qi.stage===2){
-    var s3=st.qi,q3=data()[i], o=t.dataset.qo;
-    if(o===q3.s2.ans){s3.stage=3;s3.ok=true;s3.msg='正解！ 疑問文の完成。';mark();playAu(q3.au);}
-    else s3.msg=q3.s2.why[o]||'ちがうよ。';
+  if(a==='qreset'&&st.qi){st.qi.placed=[];st.qi.msg='';render();return;}
+  if(t.dataset.qp!==undefined && st.qi && !st.qi.ok){
+    var sq=st.qi,qq=data()[i],SS=qinsSeq(qq),pi=+t.dataset.qp,it=SS.pool[pi],pos=sq.placed.length;
+    if(it.t===SS.seq[pos]){
+      sq.placed.push(pi);
+      if(sq.placed.length===SS.seq.length){sq.ok=true;sq.msg='正解！ 疑問文の完成。';mark();playAu(qq.au);}
+      else sq.msg='';
+    } else if(it.vb){ sq.msg=(qq.s2.why&&qq.s2.why[it.t])||'動詞の形がちがうよ。'; }
+    else if(it.mk){ sq.msg=(pos===SS.seq.length-1&&qq.s2.why&&qq.s2.why[it.t])||'まだ早いよ。記号は<b>いちばん最後</b>。'; }
+    else if(pos===0) sq.msg='ちがうよ。疑問文は <b>'+qq.d+'</b> が<b>いちばん最初</b>。';
+    else sq.msg='ちがうよ。疑問文の順番は <b>'+qq.d+' ＋ 主語 ＋ 動詞 ＋ …</b>。いま <b>'+pos+'</b> 個目まで選んだよ。';
     render();return;
   }
   if(t.dataset.gap!==undefined && st.ins){
