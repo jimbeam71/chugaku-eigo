@@ -36,6 +36,19 @@ h1{font-size:22px;margin:0;font-weight:700;letter-spacing:.02em;color:var(--acce
 .test{margin:10px 0;padding:10px 12px;border:2px solid var(--accent);border-radius:12px}
 .sub{color:var(--muted);font-size:13px;margin:2px 0 14px}
 .tabs{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:8px}
+.areahead{flex:1 1 100%;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px 12px}
+.areahead .an{font-weight:800;font-size:16px;margin:0 0 6px}
+.areahead .bar{height:10px;border-radius:6px;background:var(--line);overflow:hidden;margin:6px 0 8px}
+.areahead .bar i{display:block;height:100%;background:var(--accent)}
+.areahead .row{display:flex;flex-wrap:wrap;gap:8px}
+.areahead .row button{flex:1 1 40%;min-height:44px;font:inherit;font-weight:700;border-radius:10px;border:1px solid var(--line);background:var(--card);color:var(--fg);cursor:pointer}
+.areahead .row button.go{background:var(--fill);color:var(--on);border-color:var(--accent)}
+.tab.dn::after{content:" ✓";font-weight:800}
+.amap{display:flex;flex-direction:column;gap:8px}
+.amap button{text-align:left;min-height:56px;font:inherit;font-weight:700;border-radius:12px;border:1px solid var(--line);background:var(--card);color:var(--fg);padding:8px 12px;cursor:pointer}
+.amap button.cur{border-color:var(--accent);background:var(--fill);color:var(--on)}
+.amap .bar{height:8px;border-radius:5px;background:var(--line);overflow:hidden;margin-top:6px}
+.amap .bar i{display:block;height:100%;background:var(--accent)}
 .tab{flex:1 1 22%;min-width:0;font-size:13px;min-height:44px;padding:2px 4px;border:1px solid var(--line);background:var(--card);color:var(--fg);border-radius:10px;font:inherit;font-weight:700;cursor:pointer}
 .tab[aria-selected="true"]{background:var(--fill);color:var(--on);border-color:var(--accent)}
 .rvbtn{width:100%;min-height:40px;margin-bottom:12px;border:1px dashed var(--muted);background:transparent;color:var(--muted);border-radius:10px;font:inherit;font-size:14px;cursor:pointer}
@@ -132,7 +145,7 @@ rt{font-family:var(--jp);font-size:max(.45em,9px);font-weight:500;letter-spacing
 
 <div class="wrap">
   <h1>ゼロから英語</h1>
-  <p class="sub">中学英語をゼロから。1問ずつ、順番どおりに進めます（第0〜43章）。</p>
+  <p class="sub">中学英語をゼロから。1問ずつ、順番どおりに進めます。エリアごとに少しずつ進もう。</p>
   <div class="tabs" id="tabs" role="tablist"></div>
   <button class="rvbtn" id="rvbtn" data-a="rv" aria-pressed="false">一覧で確認（全問の答えを一度に見る）</button>
   <div class="dots" id="dots"></div>
@@ -147,9 +160,26 @@ var NCH=TABS.length, MIXMAP={5:[2,3,4],10:[7,8,9],14:[11,12,13],15:[5,10,14],19:
 var TESTS={44:'全復習テスト①',124:'全復習テスト②',125:'全復習テスト③',126:'全復習テスト④',127:'全復習テスト⑤',128:'総合テスト'};
 var ORDER=[];(function(){var i;for(i=0;i<=67;i++){ORDER.push(i); if(i===6){ORDER.push(132);ORDER.push(133);} if(i===14)ORDER.push(134);}ORDER.push(124);for(i=68;i<=77;i++)ORDER.push(i);[121,122,123,112,113,114,125].forEach(function(x){ORDER.push(x)});for(i=78;i<=98;i++)ORDER.push(i);ORDER.push(126);for(i=99;i<=102;i++)ORDER.push(i);[118,119,120].forEach(function(x){ORDER.push(x)});for(i=103;i<=111;i++)ORDER.push(i);[115,116,117,127,128,129,130,131].forEach(function(x){ORDER.push(x)});
 ORDER.forEach(function(c,p){TABS[c]=TABS[c].replace(/^第\d+章/,'第'+p+'章')});})();
+var AREAS=[],AREANAME=['はじめの村','be動詞の町','一般動詞の森','三単現の山','can・疑問詞の谷','進行形・命令文の川','過去のお城','名詞・前置詞の島','未来と助動詞の丘','have to・不定詞の海','疑問詞＋to・It isの港','比較・接続詞の空','受け身・現在完了の星','関係代名詞の塔','間接疑問・SVOCの城','SVOO・総合の城','公式の宝物庫'];
+(function(){var st=[0,2,7,11,16,27,35,45,55,68,121,78,89,99,106,115,129];ORDER.forEach(function(c){if(st.indexOf(c)>=0)AREAS.push([]);AREAS[AREAS.length-1].push(c);});})();
+var cleared={}; try{var sc=localStorage.getItem(STORE+'c'); if(sc) cleared=JSON.parse(sc)||{};}catch(e){}
+function saveC(){try{localStorage.setItem(STORE+'c',JSON.stringify(cleared));}catch(e){}}
 var prog={}; for(var z=0;z<NCH;z++) prog[z]=[];
 try{var s0=localStorage.getItem(STORE); if(s0){var p0=JSON.parse(s0); for(var z2=0;z2<NCH;z2++){ if(!MIXMAP[z2]&&p0&&p0[z2]) prog[z2]=p0[z2]; }}}catch(e){}
 function save(){try{localStorage.setItem(STORE,JSON.stringify(prog));}catch(e){}}
+function isDone(c){ return !!cleared[c] || (!MIXMAP[c] && DS[c].length>0 && prog[c].length>=DS[c].length); }
+function areaOf(c){ for(var k=0;k<AREAS.length;k++) if(AREAS[k].indexOf(c)>=0) return k; return 0; }
+function nextTodo(){ for(var p=0;p<ORDER.length;p++) if(!isDone(ORDER[p])) return ORDER[p]; return -1; }
+var mapOpen=false;
+function areaStat(k){ var n=0; AREAS[k].forEach(function(c){ if(isDone(c)) n++; }); return n; }
+function mapView(){
+  var h='<div class="card"><h2>エリア一覧</h2><p class="sub">いまのエリアをタップすると、つづきから始められます。</p><div class="amap">', cur=areaOf(ch), nt=nextTodo();
+  AREAS.forEach(function(ar,k){
+    var n=areaStat(k), first=ar.filter(function(c){return !isDone(c);})[0]; if(first===undefined) first=ar[0];
+    h+='<button data-ch="'+first+'" class="'+(k===cur?'cur':'')+'">エリア'+(k+1)+'　'+AREANAME[k]+'<span style="float:right">'+n+' / '+ar.length+(n===ar.length?' ✓':'')+'</span><div class="bar"><i style="width:'+Math.round(100*n/ar.length)+'%"></i></div></button>';
+  });
+  $app.innerHTML=h+'</div></div>'; 
+}
 
 var KN={noun:'名詞',verb:'動詞',adj:'形容詞',S:'主語',V:'動詞',O:'なにを',M:'いつ・どこ',C:'中身',be:'be動詞',gen:'一般動詞',Sp:'は・が',P:'〜の',Op:'を・に',N:'not'};
 var SUB={noun:'もの・人',verb:'動き',adj:'様子',S:'だれが',V:'どうする',O:'〜を',M:'時・場所',C:'なに・どんな',be:'〜です',gen:'動き',Sp:'1行目',P:'2行目',Op:'3行目',N:'打ち消し'};
@@ -213,7 +243,9 @@ function revBtn(q,n){ return (q.be)?'<br><button class="speak" data-ch="'+n+'">�
 
 function dots(){
   var d=data(),h='',t='';
-  for(var pp=0;pp<NCH;pp++){var c=ORDER[pp]; t+='<button class="tab" role="tab" data-ch="'+c+'" aria-selected="'+(c===ch)+'">'+TABS[c]+'</button>';}
+  var ak=areaOf(ch), ar=AREAS[ak], an=areaStat(ak), nt=nextTodo();
+  t+='<div class="areahead"><p class="an">エリア'+(ak+1)+' ／ '+AREAS.length+'　'+AREANAME[ak]+'</p><div class="bar"><i style="width:'+Math.round(100*an/ar.length)+'%"></i></div><div class="row"><span style="flex:1 1 100%;font-size:13px">このエリア　'+an+' / '+ar.length+' 章クリア</span><button data-a="map">エリア一覧</button>'+(nt>=0&&nt!==ch?'<button class="go" data-ch="'+nt+'">つぎはここ →</button>':'')+'</div></div>';
+  ar.forEach(function(c){ t+='<button class="tab'+(isDone(c)?' dn':'')+'" role="tab" data-ch="'+c+'" aria-selected="'+(c===ch&&!mapOpen)+'">'+TABS[c]+'</button>'; });
   $tabs.innerHTML=t;
   for(var k=0;k<d.length;k++){
     var ss=(k===0||d[k].sec!==d[k-1].sec);
@@ -230,6 +262,7 @@ var lastK='';
 function render(){ renderInner(); if(i>=0&&!review){var kk=ch+'-'+i; if(kk!==lastK){lastK=kk; try{ if($app.scrollIntoView) $app.scrollIntoView({block:'start'}); }catch(e){}}} else if(i<0) lastK=''; if(TESTS[ch]&&!review&&i>=0&&i<data().length&&$app.querySelector('.msg.ng')) data()[i].miss=1; rubify($app); rubify($tabs); }
 function renderInner(){
   dots();
+  if(mapOpen) return mapView();
   if(review) return reviewView();
   if(i===-1) return intro();
   if(i>=data().length) return finish();
@@ -1418,6 +1451,7 @@ function finish44(){
   $app.innerHTML=h;
 }
 function finish(){
+  if(!cleared[ch]){cleared[ch]=1;saveC();}
   if(TESTS[ch]) return finish44();
   var h='<div class="card"><h2>'+TABS[ch]+'　おわり</h2>';
   var msgs=[
@@ -1556,9 +1590,10 @@ function finish(){
 
 document.addEventListener('click',function(e){
   var t=e.target.closest('button'); if(!t) return;
-  if(t.dataset.ch!==undefined){ch=+t.dataset.ch;i=-1;st={};render();window.scrollTo(0,0);return;}
+  if(t.dataset.ch!==undefined){mapOpen=false;ch=+t.dataset.ch;i=-1;st={};render();window.scrollTo(0,0);return;}
   if(t.dataset.go!==undefined){i=+t.dataset.go;st={};review=false;render();return;}
   var a=t.dataset.a;
+  if(a==='map'){mapOpen=!mapOpen;render();window.scrollTo(0,0);return;}
   if(a==='rv'){review=!review;render();return;}
   if(a==='start'){i=0;render();return;}
   if(a==='next'){i++;render();return;}
@@ -1633,6 +1668,7 @@ document.addEventListener('click',function(e){
     st.q1.placed.splice(+t.dataset.rm,1); st.q1.msg=''; render(); return;
   }
 });
+(function(){var n0=nextTodo(); if(n0>=0) ch=n0;})();
 render();
 })();
 </script>
