@@ -144,6 +144,8 @@ var DS=[[{"sec": 0, "cats": "pos", "parts": [{"t": "犬", "k": "noun"}, {"t": "�
 (function(){
 var STORE='zero-eigo-v6';
 var NCH=TABS.length, MIXMAP={5:[2,3,4],10:[7,8,9],14:[11,12,13],15:[5,10,14],19:[16,17,18],23:[20,21,22],26:[24,25],30:[27,28,29],34:[31,32,33],38:[35,36,37],43:[39,40,41,42],44:[0,1,2,3,4,6,7,8,9,11,12,13,16,17,18,20,21,22,24,25,27,28,29,31,32,33,35,36,37,39,40,41,42],50:[45,46,47,48,49],54:[51,52,53], 61:[55,56,57,58,59,60], 67:[62,63,64,65,66], 71:[68,69,70], 77:[72,73,74,75,76], 83:[78,79,80,81,82], 88:[84,85,86,87], 93:[89,90,91,92], 98:[94,95,96,97], 102:[99,100,101], 105:[103,104], 108:[106,107], 111:[109,110], 114:[112,113], 117:[115,116], 120:[118,119], 123:[121,122]};
+var ORDER=[];(function(){var i;for(i=0;i<=77;i++)ORDER.push(i);[121,122,123,112,113,114].forEach(function(x){ORDER.push(x)});for(i=78;i<=102;i++)ORDER.push(i);[118,119,120].forEach(function(x){ORDER.push(x)});for(i=103;i<=111;i++)ORDER.push(i);[115,116,117].forEach(function(x){ORDER.push(x)});
+ORDER.forEach(function(c,p){TABS[c]=TABS[c].replace(/^第\d+章/,'第'+p+'章')});})();
 var prog={}; for(var z=0;z<NCH;z++) prog[z]=[];
 try{var s0=localStorage.getItem(STORE); if(s0){var p0=JSON.parse(s0); for(var z2=0;z2<NCH;z2++){ if(!MIXMAP[z2]&&p0&&p0[z2]) prog[z2]=p0[z2]; }}}catch(e){}
 function save(){try{localStorage.setItem(STORE,JSON.stringify(prog));}catch(e){}}
@@ -209,7 +211,7 @@ function revBtn(q,n){ return (q.be)?'<br><button class="speak" data-ch="'+n+'">�
 
 function dots(){
   var d=data(),h='',t='';
-  for(var c=0;c<NCH;c++) t+='<button class="tab" role="tab" data-ch="'+c+'" aria-selected="'+(c===ch)+'">'+TABS[c]+'</button>';
+  for(var pp=0;pp<NCH;pp++){var c=ORDER[pp]; t+='<button class="tab" role="tab" data-ch="'+c+'" aria-selected="'+(c===ch)+'">'+TABS[c]+'</button>';}
   $tabs.innerHTML=t;
   for(var k=0;k<d.length;k++){
     var ss=(k===0||d[k].sec!==d[k-1].sec);
@@ -1517,7 +1519,8 @@ function finish(){
     'where to・when to と、「教えてください」が言えました。',
     '疑問詞 ＋ to のミックス、よくできました！'];
   h+='<p>'+msgs[ch]+'</p>';
-  if(ch<NCH-1) h+='<button class="next" data-ch="'+(ch+1)+'">'+TABS[ch+1]+'へ</button>';
+  var po=ORDER.indexOf(ch);
+  if(po<NCH-1) h+='<button class="next" data-ch="'+ORDER[po+1]+'">'+TABS[ORDER[po+1]]+'へ</button>';
   else h+='<p class="sub">試作はここまでです。使ってみて、気づいたことを教えてください。</p>';
   h+=(MIXMAP[ch])?'<button class="next ghost" data-a="shuffle">シャッフルしなおして、もう一度</button>':'<button class="next ghost" data-a="again">この章をもう一度</button>';
   h+='</div>';
