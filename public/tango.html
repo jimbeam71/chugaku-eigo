@@ -88,6 +88,9 @@ function home(){
   card.appendChild(el('div','',c.seen+' / '+WORDS.length+' 語に出会った。 覚えた（4回クリア）：'+c.done+' 語'));
   var bar=el('div','bar'); var i=el('i'); i.style.width=Math.round(c.seen/WORDS.length*100)+'%'; bar.appendChild(i); card.appendChild(bar);
   app.appendChild(card);
+  var how=el('div','card'); how.appendChild(el('div','fb ok','使い方'));
+  ['① 英語を見て、音を聞いて、意味を4つから選ぶ。','② 答えたあと、まちがえた選択肢にも、ぜんぶ例文がついているよ。タップして音声も聞いてね！','③ ミスしたほうが勉強になる。まちがえることは、おトクなんだ。'].forEach(function(t){ var q=el('div','',t); q.style.margin='4px 0'; how.appendChild(q); });
+  app.appendChild(how);
   var left=Math.max(0,st.perDay-newToday()), unseen=WORDS.filter(function(w){return !st.words[w.id];}).length;
   var nNew=Math.min(left,unseen);
   var b1=el('button','go wide','今日の単語をはじめる（新しい語 '+nNew+'語 ＋ 復習 '+c.due+'語）');
@@ -138,7 +141,7 @@ function question(){
   var en=el('div','en '+posCls(w.pos),w.en); card.appendChild(en);
   card.appendChild(el('div','pos '+posCls(w.pos),w.pos));
   var pb=el('button','wide','♪ 音を聞く'); pb.onclick=function(){play(w.id,false);}; card.appendChild(pb);
-  card.appendChild(el('div','q','意味はどれ？'));
+  card.appendChild(el('div','q','意味はどれ？（まちがえてもOK。ミスしたほうが勉強になる）'));
   var box=el('div'); var answered=false;
   choices(w).forEach(function(o){
     var b=el('button','opt',o.ja);
@@ -155,7 +158,7 @@ function question(){
       showOne(w,detail);
       var next=el('button','go wide',idx+1<queue.length?'つぎへ':'おわる'); next.onclick=function(){idx++; question();};
       card.appendChild(next);
-      card.appendChild(el('div','hint','ほかの選択肢をタップすると、その意味の英語も見られるよ。'));
+      var tipbox=el('div','tip','まちがえた選択肢にも、ぜんぶ例文がついているよ。タップして、♪で音声も聞いてね！ミスしたほうが勉強になる。'); tipbox.style.fontWeight='700'; card.appendChild(tipbox);
     };
     box.appendChild(b);
   });
