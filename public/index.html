@@ -44,6 +44,20 @@ h1{font-size:22px;margin:0;font-weight:700;letter-spacing:.02em;color:var(--acce
 .areahead .row button{flex:1 1 40%;min-height:44px;font:inherit;font-weight:700;border-radius:10px;border:1px solid var(--line);background:var(--card);color:var(--fg);cursor:pointer}
 .areahead .row button.go{background:var(--fill);color:var(--on);border-color:var(--accent)}
 .zoo{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.stbox.flash .stpic{animation:pulse .7s ease 2}
+@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.18)}}
+#celeb{position:fixed;inset:0;z-index:50;pointer-events:none;overflow:hidden}
+#celeb i{position:absolute;top:-8%;font-style:normal;font-size:26px;animation:fall linear forwards}
+@keyframes fall{0%{transform:translateY(0) rotate(0);opacity:1}100%{transform:translateY(115vh) rotate(360deg);opacity:.9}}
+#celeb .cmsg{position:absolute;left:50%;top:38%;transform:translate(-50%,-50%);background:var(--card);color:var(--fg);border:2px solid var(--accent);border-radius:18px;padding:14px 26px;text-align:center;box-shadow:0 8px 28px rgba(0,0,0,.25);animation:popin .45s cubic-bezier(.2,1.4,.4,1)}
+#celeb .cmsg b{display:block;font-size:20px}
+#celeb .cmsg small{display:block;font-size:15px;margin-top:2px}
+#celeb .cmsg .ce{display:block;font-size:44px;line-height:1.2}
+#celeb .cmsg.big .ce{font-size:72px}
+@keyframes popin{0%{transform:translate(-50%,-50%) scale(.3);opacity:0}100%{transform:translate(-50%,-50%) scale(1);opacity:1}}
+.newan .em{animation:popin2 .6s cubic-bezier(.2,1.4,.4,1)}
+@keyframes popin2{0%{transform:scale(.2) rotate(-25deg)}100%{transform:scale(1) rotate(0)}}
+@media (prefers-reduced-motion: reduce){.stbox.flash .stpic,.newan .em,#celeb .cmsg{animation:none}}
 .stbox{flex:1 1 100%;display:flex;align-items:center;gap:12px;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:8px 12px;margin-bottom:6px}
 .stbox.flash{border-color:var(--accent);background:var(--fill);color:var(--on)}
 .stpic{position:relative;width:60px;height:60px;flex:0 0 60px;display:flex;align-items:center;justify-content:center;font-size:40px;line-height:1}
@@ -184,6 +198,21 @@ function isDone(c){ return !!cleared[c] || (!MIXMAP[c] && DS[c].length>0 && prog
 function areaOf(c){ for(var k=0;k<AREAS.length;k++) if(AREAS[k].indexOf(c)>=0) return k; return 0; }
 function nextTodo(){ for(var p=0;p<ORDER.length;p++) if(!isDone(ORDER[p])) return ORDER[p]; return -1; }
 var mapOpen=false, zooOpen=false, newSt=-1, partFlash=false;
+var _ac=null;
+function chime(notes){ try{ var AC=window.AudioContext||window.webkitAudioContext; if(!AC) return; _ac=_ac||new AC(); var t=_ac.currentTime+0.02; notes.forEach(function(f,k){ var o=_ac.createOscillator(), g=_ac.createGain(); o.type='triangle'; o.frequency.value=f; g.gain.setValueAtTime(0.0001,t+k*0.11); g.gain.exponentialRampToValueAtTime(0.18,t+k*0.11+0.02); g.gain.exponentialRampToValueAtTime(0.0001,t+k*0.11+0.28); o.connect(g); g.connect(_ac.destination); o.start(t+k*0.11); o.stop(t+k*0.11+0.3); }); }catch(e){} }
+function celebrate(kind){
+  try{
+    var big=kind==='stamp', calm=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    chime(big?[523,659,784,1047]:[659,784,988]);
+    var old=document.getElementById('celeb'); if(old) old.remove();
+    var el=document.createElement('div'); el.id='celeb'; el.setAttribute('aria-hidden','true');
+    var s=stampOf(ch), ps=partStat(), h='';
+    if(!calm){ var em=big?['🎉','✨','⭐',s[0],'🎊']:['✨','⭐','🧩']; for(var k=0;k<(big?34:14);k++){ h+='<i style="left:'+Math.round(Math.random()*100)+'%;animation-delay:'+(Math.random()*0.5).toFixed(2)+'s;animation-duration:'+(1.4+Math.random()*1.2).toFixed(2)+'s">'+em[k%em.length]+'</i>'; } }
+    h+= big?'<div class="cmsg big"><span class="ce">'+s[0]+'</span><b>スタンプ ゲット！</b><small>'+s[1]+'</small></div>':'<div class="cmsg"><span class="ce">🧩</span><b>パーツ ゲット！</b><small>'+ps.G+' / '+ps.T+'</small></div>';
+    el.innerHTML=h; document.body.appendChild(el);
+    setTimeout(function(){ if(el.parentNode) el.remove(); }, big?2800:1900);
+  }catch(e){}
+}
 function stampOf(c){ return STAMPS[ORDER.indexOf(c)]; }
 function stampAu(c){ return STAMP_AU[ORDER.indexOf(c)]; }
 function stampCount(){ var n=0; for(var c=0;c<NCH;c++) if(isDone(c)) n++; return n; }
@@ -267,7 +296,7 @@ Object.keys(MIXMAP).forEach(function(k){mixBuild(+k);});
 
 function data(){return DS[ch];}
 function secs(){return SECS[ch];}
-function mark(){ if(prog[ch].indexOf(i)<0){ var b0=partStat().G; prog[ch].push(i); if(partStat().G>b0) partFlash=true; if(!MIXMAP[ch]) save();} }
+function mark(){ if(prog[ch].indexOf(i)<0){ var b0=partStat().G; prog[ch].push(i); if(partStat().G>b0){ partFlash=true; if(!(isDone(ch)&&false)) setTimeout(function(){ celebrate(partStat().G>=partStat().T?'part':'part'); },0); } if(!MIXMAP[ch]) save();} }
 function playAu(n){
   if(!n) return;
   try{ if(window._au){window._au.pause();} window._au=new Audio((typeof AUDIO_EMBED!=='undefined'&&AUDIO_EMBED[n])||('audio/a'+n+'.mp3')); var pr=window._au.play(); if(pr&&pr.catch) pr.catch(function(){}); }catch(err){}
@@ -1486,7 +1515,7 @@ function finish44(){
   $app.innerHTML=h;
 }
 function finish(){
-  cleared[ch]=1; if(!cleared['s'+ch]){ cleared['s'+ch]=1; newSt=ch; }
+  cleared[ch]=1; if(!cleared['s'+ch]){ cleared['s'+ch]=1; newSt=ch; setTimeout(function(){ celebrate('stamp'); },0); }
   saveC();
   if(TESTS[ch]) return finish44();
   var h='<div class="card"><h2>'+TABS[ch]+'　おわり</h2>'+stampBanner();
