@@ -1,6 +1,6 @@
 {
  "id": "set01",
- "title": "オリジナル模試 第1回",
+ "title": "第5段階 入試レベル 1",
  "A": [
   {
    "q": "What will Tom say next?",
@@ -174,5 +174,6 @@
    }
   ]
  },
- "mode": "practice"
+ "mode": "practice",
+ "level": 5
 }

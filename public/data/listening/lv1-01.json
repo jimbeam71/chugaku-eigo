@@ -1,0 +1,164 @@
+{
+ "id": "lv1-01",
+ "title": "第1段階 はじめの一歩 1",
+ "level": 1,
+ "mode": "practice",
+ "A": [
+  {
+   "q": "What will the boy say next?",
+   "choices": [
+    "Thank you.",
+    "You're welcome.",
+    "See you."
+   ],
+   "ans": 0,
+   "ja": "（男の子）お母さん、おなかがすいた。／（母）パンを食べなさい。",
+   "why": "パンをすすめられたので、お礼の Thank you. が自然。You're welcome. は「お礼を言われた側」が言う。",
+   "script": [
+    "Man: Mom, I'm hungry.",
+    "Woman: Have some bread."
+   ]
+  },
+  {
+   "q": "What does Tom have at home?",
+   "choices": [
+    "A dog.",
+    "A cat.",
+    "A bird."
+   ],
+   "ans": 0,
+   "ja": "（女）トム、犬は好き？／（トム）うん。家に犬がいるよ。名前はマックス。",
+   "why": "I have a dog at home. をそのまま聞き取る。",
+   "script": [
+    "Woman: Do you like dogs, Tom?",
+    "Man: Yes. I have a dog at home. His name is Max."
+   ]
+  }
+ ],
+ "B": [
+  {
+   "q": "What does Ken want?",
+   "options": [
+    "🚲",
+    "📱",
+    "⚽",
+    "👟"
+   ],
+   "labels": [
+    "自転車",
+    "スマホ",
+    "サッカーボール",
+    "くつ"
+   ],
+   "ans": 0,
+   "ja": "（女）ケン、誕生日に何がほしい？／（ケン）新しい自転車がほしい。",
+   "why": "bike = 自転車。",
+   "script": [
+    "Woman: What do you want for your birthday, Ken?",
+    "Man: I want a new bike."
+   ]
+  },
+  {
+   "q": "How was the weather in the afternoon?",
+   "options": [
+    "☀️",
+    "🌧️",
+    "☁️",
+    "❄️"
+   ],
+   "labels": [
+    "晴れ",
+    "雨",
+    "くもり",
+    "雪"
+   ],
+   "ans": 0,
+   "ja": "（男）今日の天気はどうだった？／（女）朝は雨だったけど、午後は晴れたよ。",
+   "why": "but のあとが午後。but の前後で内容が変わる。",
+   "script": [
+    "Man: How was the weather today?",
+    "Woman: It was rainy in the morning, but sunny in the afternoon."
+   ]
+  }
+ ],
+ "C1": {
+  "script": [
+   "Hello, everyone. I'm Ms. Lee. I'm from Australia. I like animals. I have two cats and one dog. Every morning, I walk with my dog in the park. It takes thirty minutes. In my free time, I read books about animals. Do you like animals?"
+  ],
+  "ja": "みなさん、こんにちは。リーです。オーストラリア出身です。動物が好きです。ねこが2ひきと犬が1ぴきいます。毎朝、公園で犬と散歩します。30分かかります。ひまなときは、動物の本を読みます。みなさんは動物が好きですか？",
+  "qs": [
+   {
+    "q": "Where is Ms. Lee from?",
+    "choices": [
+     "Australia.",
+     "America.",
+     "Canada."
+    ],
+    "ans": 0,
+    "why": "I'm from Australia. 出身は最初のほうに出る。"
+   },
+   {
+    "q": "How many cats does Ms. Lee have?",
+    "choices": [
+     "One.",
+     "Two.",
+     "Three."
+    ],
+    "ans": 1,
+    "why": "two cats and one dog。ねこは2、犬は1。数字と動物を結びつけて聞く。"
+   },
+   {
+    "q": "What does Ms. Lee do every morning?",
+    "choices": [
+     "She walks with her dog.",
+     "She feeds her cats.",
+     "She reads books."
+    ],
+    "ans": 0,
+    "why": "Every morning のあとを聞く。本はひまなときに読む。"
+   }
+  ]
+ },
+ "C2": {
+  "script": [
+   "Ken: Ms. Lee's dog is cute. Do you have a pet, Mika?",
+   "Mika: Yes, I have a rabbit. I feed it every morning.",
+   "Ken: Do you walk with it?",
+   "Mika: No. It stays at home. But I play with it after school.",
+   "Ken: That sounds nice."
+  ],
+  "ja": "（ケン）リー先生の犬、かわいいね。ミカはペットを飼ってる？／（ミカ）うん、ウサギを飼ってる。毎朝えさをあげるよ。／（ケン）いっしょに散歩するの？／（ミカ）ううん。家にいるの。でも放課後に、いっしょに遊ぶよ。／（ケン）いいね。",
+  "qs": [
+   {
+    "q": "Does Mika have a pet?",
+    "choices": [
+     "Yes, she has a rabbit.",
+     "Yes, she has a dog.",
+     "No, she doesn't."
+    ],
+    "ans": 0,
+    "why": "I have a rabbit."
+   },
+   {
+    "q": "When does Mika feed her pet?",
+    "choices": [
+     "Every morning.",
+     "After school.",
+     "At night."
+    ],
+    "ans": 0,
+    "why": "feed it every morning。after school は『遊ぶ』時間。"
+   },
+   {
+    "q": "What does Mika do after school?",
+    "choices": [
+     "She walks with the rabbit.",
+     "She plays with the rabbit.",
+     "She feeds the rabbit."
+    ],
+    "ans": 1,
+    "why": "No (散歩はしない) → But I play with it after school."
+   }
+  ]
+ }
+}
