@@ -1,0 +1,177 @@
+{
+ "id": "set01",
+ "title": "オリジナル模試 第1回",
+ "A": [
+  {
+   "q": "What will Tom say next?",
+   "choices": [
+    "Thanks, I'll go and see.",
+    "Yes, it's a big bag.",
+    "No, the festival is over."
+   ],
+   "ans": 0,
+   "ja": "（母）トム、明日の学園祭の準備はできた？／（トム）だいたいね。でも、学校のかばんが見つからないんだ。／（母）リビングで見たよ。そこは見た？",
+   "why": "「そこは見た？」と聞かれているので、「ありがとう、見てくるよ」と答えるのが自然。",
+   "script": [
+    "Woman: Tom, are you ready for the school festival tomorrow?",
+    "Man: Almost. But I can't find my school bag.",
+    "Woman: I saw it in the living room. Did you look there?"
+   ]
+  },
+  {
+   "q": "Why didn't the boy choose the first flower pot?",
+   "choices": [
+    "It was too expensive.",
+    "It was too big for the room.",
+    "His grandmother doesn't like flowers."
+   ],
+   "ans": 1,
+   "ja": "（男の子）すみません、祖母へのプレゼントがほしいです。花が好きです。／（店員）この花びんはどう？／（男の子）すてきだけど、祖母の小さな部屋には大きすぎます。／（店員）では、こちらの小さいのは？／（男の子）いいですね、それにします。",
+   "why": "too big for her small room が決め手。",
+   "script": [
+    "Man: Excuse me. I want to buy a present for my grandmother. She likes flowers.",
+    "Woman: How about this flower pot? Many people buy it for birthdays.",
+    "Man: It's nice, but it's too big for her small room.",
+    "Woman: Then, how about this smaller one?",
+    "Man: Good. I'll take it."
+   ]
+  }
+ ],
+ "B": [
+  {
+   "q": "What does Ken do on Wednesdays?",
+   "options": [
+    "⚾",
+    "📚",
+    "🍳",
+    "⚽"
+   ],
+   "labels": [
+    "野球",
+    "図書館で勉強",
+    "レストランの手伝い",
+    "サッカー"
+   ],
+   "ans": 1,
+   "ja": "（女）ケン、水曜日は放課後何をしているの？／（ケン）月曜日は友だちと野球をするよ。水曜日は図書館でエミと勉強する。／（女）金曜日は？／（ケン）父のレストランを手伝う。",
+   "why": "月曜＝野球、水曜＝図書館、金曜＝レストラン。曜日と内容を結びつけて聞く。",
+   "script": [
+    "Woman: Ken, what do you do after school on Wednesdays?",
+    "Man: I usually play baseball with my friends on Mondays. On Wednesdays, I go to the library to study with Emi.",
+    "Woman: How about Fridays?",
+    "Man: I help my father at his restaurant."
+   ]
+  },
+  {
+   "q": "What will the boy have for dinner?",
+   "options": [
+    "🍛🥗",
+    "🍛🍞",
+    "🍝🥗",
+    "🍛🍅"
+   ],
+   "labels": [
+    "カレーライスとサラダ",
+    "カレーとパン",
+    "パスタとサラダ",
+    "カレーとトマト"
+   ],
+   "ans": 0,
+   "ja": "（男の子）お母さん、夕ごはんは何？／（母）カレーよ。ごはんとパン、どっちがいい？／（男の子）ごはんで。それとサラダも食べたい。／（母）いいけど、トマトがないの。キャベツでいい？／（男の子）うん、それでいいよ。",
+   "why": "rice を選び、サラダはトマトの代わりにキャベツ。トマトはない、が落とし穴。",
+   "script": [
+    "Man: Mom, what's for dinner?",
+    "Woman: I'm making curry. Do you want rice or bread with it?",
+    "Man: Rice, please. And can I have a salad?",
+    "Woman: Sure, but I don't have tomatoes. Is cabbage OK?",
+    "Man: Yes, that's fine."
+   ]
+  }
+ ],
+ "C1": {
+  "script": [
+   "Hello, everyone. Today, I want to tell you about something I did in my hometown in Canada. My town is near a big lake, and many people enjoy swimming there in summer. But three years ago, I found a lot of trash on the beach. There were plastic bottles, paper cups, and even old shoes. I felt sad, so I asked my friends to help me clean the beach. Ten people came on the first Saturday. We worked for two hours and filled forty bags with trash. After that, we thought about a better way. We made a poster and put it near the beach. It said, \"Take your trash home.\" We also put some big trash cans at the entrance. Now, more than one hundred people join our clean-up every spring. Last year, a local newspaper wrote about us, and many children came to help. I learned that small actions can change a town. Now, in Japan, I want to find something that I can do for my new town. Please tell me your ideas after this class."
+  ],
+  "ja": "みなさん、こんにちは。今日は、カナダの故郷でわたしがしたことを話します。わたしの町は大きな湖の近くにあり、夏には多くの人が泳ぎます。でも3年前、浜辺にたくさんのごみを見つけました。ペットボトル、紙コップ、古いくつまでありました。悲しくなって、友だちに浜辺のそうじを手伝ってと頼みました。最初の土曜日に10人が来ました。2時間働いて、40ふくろのごみを集めました。そのあと、もっといい方法を考えました。ポスターを作って浜辺の近くにはりました。「ごみは持ち帰ろう」と書きました。入り口には大きなごみ箱もいくつか置きました。いまは毎年春に100人以上がそうじに参加します。去年は地元の新聞がわたしたちのことを書き、多くの子どもたちが手伝いに来ました。小さな行動が町を変えられると学びました。いま日本で、新しい町のためにできることを見つけたいです。この授業のあと、みなさんの考えを聞かせてください。",
+  "qs": [
+   {
+    "q": "How many people came to the first clean-up?",
+    "choices": [
+     "Ten people.",
+     "Forty people.",
+     "One hundred people."
+    ],
+    "ans": 0,
+    "why": "first Saturday のところで Ten people。40 は集めたごみぶくろの数、100 は今の参加者数。数字の引っかけに注意。"
+   },
+   {
+    "q": "What did Mr. Green and his friends put near the beach?",
+    "choices": [
+     "A poster.",
+     "A bench.",
+     "A flower garden."
+    ],
+    "ans": 0,
+    "why": "We made a poster and put it near the beach."
+   },
+   {
+    "q": "What did Mr. Green learn?",
+    "choices": [
+     "Beaches are always clean in spring.",
+     "Small actions can change a town.",
+     "Newspapers are important to the town."
+    ],
+    "ans": 1,
+    "why": "最後のまとめ I learned that... を聞き取る。まとめは終わり近くに出る。"
+   }
+  ]
+ },
+ "C2": {
+  "script": [
+   "Haruka: Mr. Green's story was great. I live near the sea in Ishikawa, and sometimes I see trash on the beach.",
+   "Tom: Really? I want to do something, too. Do you have any ideas, Haruka?",
+   "Haruka: Well, how about a clean-up day for our school? We can invite students from other classes.",
+   "Tom: That sounds good. But how can we get many students to join?",
+   "Haruka: I think a poster is not enough. Last month, I saw a school in my town use social media. They shared photos from their first clean-up, and the next time, more students came.",
+   "Tom: Nice. We can take photos and put them on the school website.",
+   "Haruka: Also, we can give small prizes. For example, a sticker for everyone who works for one hour.",
+   "Tom: Stickers? I'm not sure students will like that.",
+   "Haruka: Then, maybe we can ask our teachers to give extra points to the class that collects the most trash.",
+   "Tom: Hmm, that might be fun. Let's talk to our teacher tomorrow.",
+   "Haruka: OK. I'll make a plan tonight, and show it to you after school."
+  ],
+  "ja": "（はるか）グリーン先生の話、すてきだったね。わたしは石川の海の近くに住んでいて、ときどき浜辺でごみを見るの。／（トム）本当？ぼくも何かしたい。何かアイデアある、はるか？／（はるか）うーん、学校のそうじの日はどう？ほかのクラスの生徒も誘えるよ。／（トム）いいね。でも、どうやって多くの生徒に参加してもらう？／（はるか）ポスターだけでは足りないと思う。先月、わたしの町の学校がSNSを使っているのを見たの。最初のそうじの写真を共有したら、次はもっと生徒が来たんだって。／（トム）いいね。写真をとって学校のホームページにのせよう。／（はるか）それに、小さな賞品もあげられる。たとえば、1時間働いた人みんなにシール。／（トム）シール？生徒が喜ぶかなあ。／（はるか）じゃあ、いちばんごみを集めたクラスに、先生から追加の点をあげてもらうのは？／（トム）おお、それはおもしろそう。明日、先生に話そう。／（はるか）わかった。今夜計画を作って、放課後に見せるね。",
+  "qs": [
+   {
+    "q": "Why does Haruka want to do something?",
+    "choices": [
+     "She sometimes sees trash on the beach near her house.",
+     "Her teacher asked her to do it.",
+     "She wants to win a prize."
+    ],
+    "ans": 0,
+    "why": "最初の発言。I see trash on the beach。"
+   },
+   {
+    "q": "How did a school in Haruka's town get more students to join?",
+    "choices": [
+     "By giving every student a sticker.",
+     "By sharing photos from their first clean-up.",
+     "By asking a newspaper to write about it."
+    ],
+    "ans": 1,
+    "why": "シールとポイントは、はるかの『案』であって、実際にその学校がやったことは写真の共有。"
+   },
+   {
+    "q": "What will Haruka do tonight?",
+    "choices": [
+     "Talk to the teacher.",
+     "Take photos on the beach.",
+     "Make a plan."
+    ],
+    "ans": 2,
+    "why": "Let's talk to our teacher tomorrow は『明日』。今夜は I'll make a plan tonight。"
+   }
+  ]
+ }
+}

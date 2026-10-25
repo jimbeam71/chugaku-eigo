@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>ゼロから英語：リスニング</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;800&family=Zen+Maru+Gothic:wght@400;500;700&display=swap">
+<style>
+:root{
+  --bg:#F2F5F9; --card:#FFFFFF; --fg:#1B2433; --muted:#5B6779; --line:#D5DDE8;
+  --accent:#8A6D00; --fill:#F7E08A; --on:#3A2F05; --ok:#1B7F62; --ng:#D13A3A; --sel:#DCEBFF;
+  --jp:"Zen Maru Gothic","Hiragino Maru Gothic ProN","Yu Gothic",sans-serif;
+  --en:"Nunito","Helvetica Neue",Arial,sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#111823; --card:#1A2433; --fg:#E8EDF5; --muted:#9AA8BD; --line:#2B394E;
+    --accent:#E9D27A; --fill:#E9D27A; --on:#2A2205; --ok:#55CBA3; --ng:#FF8080; --sel:#27405F; color-scheme:dark;
+  }
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--jp);font-size:16px;line-height:1.7;
+  padding-block:16px 40px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.wrap{max-width:560px;margin:0 auto}
+h1{font-size:22px;margin:0;font-weight:700;color:var(--accent)}
+.sub{color:var(--muted);font-size:13px;margin:2px 0 14px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px;margin:12px 0}
+button{font:inherit;cursor:pointer;min-height:48px;border-radius:12px;border:1px solid var(--line);background:var(--card);color:var(--fg);padding:8px 14px}
+button.go{background:var(--fill);color:var(--on);border-color:var(--accent);font-weight:700}
+button.wide{width:100%;margin:6px 0}
+button:disabled{opacity:.5;cursor:default}
+.hint{font-size:13px;color:var(--muted)}
+.sec{font-weight:800;color:var(--accent);font-size:15px}
+.ins{font-size:14px;color:var(--muted);margin:4px 0 8px}
+.playst{font-weight:700;margin:6px 0;min-height:1.6em}
+textarea{width:100%;min-height:90px;font:inherit;border:1px solid var(--line);border-radius:10px;padding:8px;background:var(--bg);color:var(--fg);margin:6px 0}
+.qn{font-weight:800;margin:12px 0 4px}
+.ch{display:flex;gap:8px;align-items:stretch;margin:6px 0}
+.ch .tx{flex:1;font-family:var(--en);font-weight:700;font-size:17px;padding:8px 10px;border:1px solid var(--line);border-radius:10px}
+.ch button{min-width:56px}
+.ch button.on{background:var(--sel);border-color:var(--accent);font-weight:800}
+.opt{display:block;width:100%;text-align:left;font-family:var(--en);font-weight:700;font-size:17px;margin:6px 0;min-height:52px}
+.opt.on{background:var(--sel);border-color:var(--accent);border-width:2px}
+.pics{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.pic{font-size:44px;text-align:center;min-height:84px}
+.pic.on{background:var(--sel);border-color:var(--accent);border-width:3px}
+.pic small{display:block;font-size:12px;color:var(--muted);font-family:var(--jp)}
+.ok{color:var(--ok);font-weight:800} .ng{color:var(--ng);font-weight:800}
+.big{font-size:34px;font-weight:800;text-align:center;color:var(--accent)}
+details{margin:8px 0} summary{cursor:pointer;font-weight:700}
+.scr{font-family:var(--en);font-size:15px;margin:4px 0}
+.row{display:flex;gap:8px}
+.row button{flex:1}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>ゼロから英語：リスニング</h1>
+  <div class="sub">高校入試の聞き取りを、本番と同じ形で練習しよう。</div>
+  <div id="app"></div>
+  <p class="hint"><a href="index.html" style="color:var(--accent)">← 文法のページにもどる</a></p>
+</div>
+<script>
+(function(){
+var app=document.getElementById('app'), SET=null, step=0, ans={}, memo={}, au=null, timer=null;
+var STEPS=[]; // {key,type}
+function el(t,c,x){var e=document.createElement(t); if(c) e.className=c; if(x!==undefined) e.textContent=x; return e;}
+function stopAudio(){ if(timer){clearTimeout(timer); timer=null;} if(au){au.onended=null; try{au.pause();}catch(e){} au=null;} }
+function playTwice(file,st,btn,twice){
+  stopAudio(); btn.disabled=true; var n=0;
+  function run(){
+    n++; st.textContent=twice?('放送中… '+n+'回目 / 2回'):'放送中…';
+    au=new Audio('audio/l/'+file+'.mp3');
+    au.onended=function(){
+      if(twice && n<2){ st.textContent='つぎの放送まで少し待つ…'; timer=setTimeout(run,3000); }
+      else{ st.textContent=twice?'放送おわり。答えを選ぼう。':'おわり'; btn.disabled=false; btn.textContent='▶ もう一度聞く（練習用）'; }
+    };
+    var p=au.play(); if(p&&p.catch) p.catch(function(){ st.textContent='音が出せませんでした。もう一度ボタンを押してください。'; btn.disabled=false; });
+  }
+  run();
+}
+function home(){
+  stopAudio(); app.innerHTML='';
+  var c=el('div','card');
+  c.appendChild(el('div','sec','石川県の入試にあわせた形'));
+  ['A：短い対話を聞いて、a・b・cが正しいか誤りかを判断する。','B：対話を聞いて、答えにあたる絵を選ぶ。','C：長い放送（パート1）と長い対話（パート2）を聞いて、3問ずつ答える。','放送はぜんぶ2回。メモを取ってOK。'].forEach(function(t){var d=el('div','',t); d.style.margin='4px 0'; c.appendChild(d);});
+  app.appendChild(c);
+  var b=el('button','go wide','第1回をはじめる（約10分）'); b.onclick=function(){ start('set01'); }; app.appendChild(b);
+  var h=el('div','hint','※音声はオリジナルです。過去問そのものではありません。形・長さ・速さを入試にあわせています。'); app.appendChild(h);
+}
+function start(id){
+  fetch('data/listening/'+id+'.json').then(function(r){return r.json();}).then(function(d){
+    SET=d; STEPS=[{k:'A',i:0},{k:'A',i:1},{k:'B',i:0},{k:'B',i:1},{k:'C1'},{k:'C2'}]; step=0; ans={}; memo={}; show();
+  }).catch(function(){ app.textContent='データを読みこめませんでした。ページを開きなおしてください。'; });
+}
+function memoBox(key){ var t=el('textarea'); t.placeholder='メモ（聞きながら書いてOK）'; t.value=memo[key]||''; t.oninput=function(){memo[key]=t.value;}; return t; }
+function player(file,twice){
+  var box=el('div'); var b=el('button','go wide','▶ 放送を聞く（自動で2回流れます）'); var st=el('div','playst','');
+  b.onclick=function(){ playTwice(file,st,b,twice); }; box.appendChild(b); box.appendChild(st); return box;
+}
+function setAns(key,val,redraw){ ans[key]=val; redraw(); updNext(); }
+var nextBtn=null;
+function complete(s){
+  if(s.k==='A') return [0,1,2].every(function(j){return ans['A'+s.i+'_'+j]!==undefined;});
+  if(s.k==='B') return ans['B'+s.i]!==undefined;
+  if(s.k==='C1') return [0,1,2].every(function(j){return ans['C1_'+j]!==undefined;});
+  if(s.k==='C2') return [0,1,2].every(function(j){return [0,1,2].every(function(m){return ans['C2_'+j+'_'+m]!==undefined;});});
+}
+function updNext(){ if(nextBtn) nextBtn.disabled=!complete(STEPS[step]); }
+function judgeRows(prefix,choices,L){
+  var wrap=el('div');
+  function draw(){
+    wrap.innerHTML='';
+    choices.forEach(function(c,j){
+      var r=el('div','ch'); r.appendChild(el('div','tx',L[j]+'. '+c));
+      ['正','誤'].forEach(function(lab,v){ var b=el('button',ans[prefix+'_'+j]===(v===0)?'on':'',lab); b.onclick=function(){ ans[prefix+'_'+j]=(v===0); draw(); updNext(); }; r.appendChild(b); });
+      wrap.appendChild(r);
+    });
+  }
+  draw(); return wrap;
+}
+function show(){
+  stopAudio(); app.innerHTML=''; var s=STEPS[step];
+  app.appendChild(el('div','hint',(step+1)+' / '+STEPS.length));
+  var card=el('div','card');
+  if(s.k==='A'){
+    var it=SET.A[s.i];
+    card.appendChild(el('div','sec','A　No.'+(s.i+1)));
+    card.appendChild(el('div','ins','対話と質問を聞いて、a・b・cそれぞれが「正しい」か「誤り」かを選ぶ。正しい答えは1つ。'));
+    card.appendChild(player('set01-A'+(s.i+1),true)); card.appendChild(memoBox('A'+s.i));
+    card.appendChild(judgeRows('A'+s.i,it.choices,['a','b','c']));
+  } else if(s.k==='B'){
+    var it=SET.B[s.i];
+    card.appendChild(el('div','sec','B　No.'+(s.i+1)));
+    card.appendChild(el('div','ins','対話と質問を聞いて、答えを表す絵をア〜エから1つ選ぶ。'));
+    card.appendChild(player('set01-B'+(s.i+1),true)); card.appendChild(memoBox('B'+s.i));
+    var g=el('div','pics'); var K=['ア','イ','ウ','エ'];
+    function drawB(){ g.innerHTML=''; it.options.forEach(function(o,j){ var b=el('button','pic'+(ans['B'+s.i]===j?' on':''),o); b.appendChild(el('small','',K[j])); b.onclick=function(){ ans['B'+s.i]=j; drawB(); updNext(); }; g.appendChild(b); }); }
+    drawB(); card.appendChild(g);
+  } else if(s.k==='C1'){
+    card.appendChild(el('div','sec','C　パート1'));
+    card.appendChild(el('div','ins','ALTの先生の話を聞いて、3つの質問にア〜ウで答える。質問は放送で読まれます。'));
+    card.appendChild(player('set01-C1',true)); card.appendChild(memoBox('C1'));
+    SET.C1.qs.forEach(function(q,j){
+      card.appendChild(el('div','qn','No.'+(j+1)));
+      var box=el('div'); var K=['ア','イ','ウ'];
+      (function(j,q,box){ function d(){ box.innerHTML=''; q.choices.forEach(function(c,m){ var b=el('button','opt'+(ans['C1_'+j]===m?' on':''),K[m]+'  '+c); b.onclick=function(){ ans['C1_'+j]=m; d(); updNext(); }; box.appendChild(b); }); } d(); })(j,q,box);
+      card.appendChild(box);
+    });
+  } else {
+    card.appendChild(el('div','sec','C　パート2'));
+    card.appendChild(el('div','ins','二人の対話を聞いて、3つの質問について、a・b・cが「正しい」か「誤り」かを選ぶ。それぞれ正しい答えは1つ。'));
+    card.appendChild(player('set01-C2',true)); card.appendChild(memoBox('C2'));
+    SET.C2.qs.forEach(function(q,j){ card.appendChild(el('div','qn','No.'+(j+1))); card.appendChild(judgeRows('C2_'+j,q.choices,['a','b','c'])); });
+  }
+  app.appendChild(card);
+  nextBtn=el('button','go wide',step+1<STEPS.length?'つぎへ':'答え合わせ'); nextBtn.disabled=true;
+  nextBtn.onclick=function(){ stopAudio(); if(step+1<STEPS.length){step++; show(); window.scrollTo(0,0);} else result(); };
+  app.appendChild(nextBtn); updNext();
+}
+function judgeOK(prefix,correct){ // 正は correct の1つだけ
+  for(var j=0;j<3;j++){ if(ans[prefix+'_'+j]!==(j===correct)) return false; } return true;
+}
+function result(){
+  stopAudio(); app.innerHTML=''; var total=0, max=0, rows=[];
+  function add(label,ok,detail,why,file){ max++; if(ok) total++; rows.push({label:label,ok:ok,detail:detail,why:why}); }
+  var K3=['ア','イ','ウ'], K4=['ア','イ','ウ','エ'], L=['a','b','c'];
+  SET.A.forEach(function(it,i){ add('A No.'+(i+1),judgeOK('A'+i,it.ans),'質問：'+it.q+'　正解：'+L[it.ans]+'. '+it.choices[it.ans],it.why); });
+  SET.B.forEach(function(it,i){ add('B No.'+(i+1),ans['B'+i]===it.ans,'質問：'+it.q+'　正解：'+K4[it.ans]+'（'+it.labels[it.ans]+'）',it.why); });
+  SET.C1.qs.forEach(function(q,j){ add('C パート1 No.'+(j+1),ans['C1_'+j]===q.ans,'質問：'+q.q+'　正解：'+K3[q.ans]+'. '+q.choices[q.ans],q.why); });
+  SET.C2.qs.forEach(function(q,j){ add('C パート2 No.'+(j+1),judgeOK('C2_'+j,q.ans),'質問：'+q.q+'　正解：'+L[q.ans]+'. '+q.choices[q.ans],q.why); });
+  var c=el('div','card'); c.appendChild(el('div','big',total+' / '+max)); 
+  c.appendChild(el('div','hint','まちがえた問題は、スクリプトを見ながら、もう一度聞こう。聞き取れなかった所に、線を引いてみよう。')); app.appendChild(c);
+  rows.forEach(function(r){ var d=el('div','card'); var h=el('div',r.ok?'ok':'ng',(r.ok?'○ ':'× ')+r.label); d.appendChild(h); d.appendChild(el('div','',r.detail)); d.appendChild(el('div','hint','ポイント：'+r.why)); app.appendChild(d); });
+  // scripts
+  var sc=el('div','card'); sc.appendChild(el('div','sec','スクリプトと日本語訳'));
+  function block(title,file,lines,ja){
+    var dt=el('details'); dt.appendChild(el('summary','',title));
+    var b=el('button','wide','▶ 聞く'); b.onclick=function(){ stopAudio(); au=new Audio('audio/l/'+file+'.mp3'); var p=au.play(); if(p&&p.catch) p.catch(function(){}); }; dt.appendChild(b);
+    lines.forEach(function(t){ dt.appendChild(el('div','scr',t)); });
+    var j=el('div','hint',ja); j.style.marginTop='8px'; dt.appendChild(j);
+    if(memo[title]) {} sc.appendChild(dt);
+  }
+  SET.A.forEach(function(it,i){ block('A No.'+(i+1),'set01-A'+(i+1),it.script,it.ja); });
+  SET.B.forEach(function(it,i){ block('B No.'+(i+1),'set01-B'+(i+1),it.script,it.ja); });
+  block('C パート1','set01-C1',SET.C1.script,SET.C1.ja);
+  block('C パート2','set01-C2',SET.C2.script,SET.C2.ja);
+  app.appendChild(sc);
+  var b1=el('button','go wide','もう一度やる'); b1.onclick=function(){ start('set01'); }; app.appendChild(b1);
+  var b2=el('button','wide','トップにもどる'); b2.onclick=home; app.appendChild(b2);
+}
+home();
+})();
+</script>
+</body>
+</html>
