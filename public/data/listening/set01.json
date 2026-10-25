@@ -65,15 +65,15 @@
   {
    "q": "What will the boy have for dinner?",
    "options": [
-    "🍛🥗",
+    "🍛🥬",
     "🍛🍞",
-    "🍝🥗",
+    "🍝🥬",
     "🍛🍅"
    ],
    "labels": [
-    "カレーライスとサラダ",
+    "カレーライスとキャベツのサラダ",
     "カレーとパン",
-    "パスタとサラダ",
+    "パスタとキャベツのサラダ",
     "カレーとトマト"
    ],
    "ans": 0,
@@ -173,5 +173,6 @@
     "why": "Let's talk to our teacher tomorrow は『明日』。今夜は I'll make a plan tonight。"
    }
   ]
- }
+ },
+ "mode": "practice"
 }

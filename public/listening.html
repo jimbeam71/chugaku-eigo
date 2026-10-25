@@ -62,22 +62,30 @@ details{margin:8px 0} summary{cursor:pointer;font-weight:700}
 </div>
 <script>
 (function(){
-var app=document.getElementById('app'), SET=null, step=0, ans={}, memo={}, au=null, timer=null;
-var STEPS=[]; // {key,type}
+var app=document.getElementById('app'), SET=null, step=0, ans={}, memo={}, checked={}, au=null, timer=null, STEPS=[], nextBtn=null;
+var K3=['ア','イ','ウ'], K4=['ア','イ','ウ','エ'], L=['a','b','c'];
 function el(t,c,x){var e=document.createElement(t); if(c) e.className=c; if(x!==undefined) e.textContent=x; return e;}
 function stopAudio(){ if(timer){clearTimeout(timer); timer=null;} if(au){au.onended=null; try{au.pause();}catch(e){} au=null;} }
-function playTwice(file,st,btn,twice){
+function playSeq(file,st,btn,times){
   stopAudio(); btn.disabled=true; var n=0;
   function run(){
-    n++; st.textContent=twice?('放送中… '+n+'回目 / 2回'):'放送中…';
+    n++; st.textContent=times>1?('放送中… '+n+'回目 / '+times+'回'):'放送中…';
     au=new Audio('audio/l/'+file+'.mp3');
     au.onended=function(){
-      if(twice && n<2){ st.textContent='つぎの放送まで少し待つ…'; timer=setTimeout(run,3000); }
-      else{ st.textContent=twice?'放送おわり。答えを選ぼう。':'おわり'; btn.disabled=false; btn.textContent='▶ もう一度聞く（練習用）'; }
+      if(n<times){ st.textContent='つぎの放送まで少し待つ…'; timer=setTimeout(run,3000); }
+      else{ st.textContent='放送おわり。何回でも聞けるよ。'; btn.disabled=false; }
     };
     var p=au.play(); if(p&&p.catch) p.catch(function(){ st.textContent='音が出せませんでした。もう一度ボタンを押してください。'; btn.disabled=false; });
   }
   run();
+}
+function player(file){
+  var box=el('div'), st=el('div','playst','');
+  var r=el('div','row');
+  var b2=el('button','go','▶ 本番どおり（2回）'), b1=el('button','','▶ 1回だけ聞く'), bs=el('button','','■ とめる');
+  b2.onclick=function(){ playSeq(file,st,b2,2); }; b1.onclick=function(){ playSeq(file,st,b1,1); };
+  bs.onclick=function(){ stopAudio(); st.textContent='とめました。'; b1.disabled=false; b2.disabled=false; };
+  r.appendChild(b2); r.appendChild(b1); r.appendChild(bs); box.appendChild(r); box.appendChild(st); return box;
 }
 function home(){
   stopAudio(); app.innerHTML='';
@@ -85,107 +93,120 @@ function home(){
   c.appendChild(el('div','sec','石川県の入試にあわせた形'));
   ['A：短い対話を聞いて、a・b・cが正しいか誤りかを判断する。','B：対話を聞いて、答えにあたる絵を選ぶ。','C：長い放送（パート1）と長い対話（パート2）を聞いて、3問ずつ答える。','放送はぜんぶ2回。メモを取ってOK。'].forEach(function(t){var d=el('div','',t); d.style.margin='4px 0'; c.appendChild(d);});
   app.appendChild(c);
-  var b=el('button','go wide','第1回をはじめる（約10分）'); b.onclick=function(){ start('set01'); }; app.appendChild(b);
-  var h=el('div','hint','※音声はオリジナルです。過去問そのものではありません。形・長さ・速さを入試にあわせています。'); app.appendChild(h);
+  var c2=el('div','card'); c2.appendChild(el('div','sec','練習のしかた'));
+  ['① 1問ずつ聞く。何回でも聞いていい（「1回だけ」ボタンで何度でも）。','② 答えを選んだら「答え合わせ」。英語の全文と日本語訳が出るよ。','③ 全文を見ながら、もう一度聞こう。聞き取れなかった所がわかる。'].forEach(function(t){var d=el('div','',t); d.style.margin='4px 0'; c2.appendChild(d);});
+  app.appendChild(c2);
+  var b=el('button','go wide','第1回をはじめる（練習モード・約15分）'); b.onclick=function(){ start('set01'); }; app.appendChild(b);
+  app.appendChild(el('div','hint','※音声はオリジナルです。過去問そのものではありません。形・長さ・速さを入試にあわせています。'));
 }
 function start(id){
   fetch('data/listening/'+id+'.json').then(function(r){return r.json();}).then(function(d){
-    SET=d; STEPS=[{k:'A',i:0},{k:'A',i:1},{k:'B',i:0},{k:'B',i:1},{k:'C1'},{k:'C2'}]; step=0; ans={}; memo={}; show();
+    SET=d; STEPS=[{k:'A',i:0},{k:'A',i:1},{k:'B',i:0},{k:'B',i:1},{k:'C1'},{k:'C2'}]; step=0; ans={}; memo={}; checked={}; show();
   }).catch(function(){ app.textContent='データを読みこめませんでした。ページを開きなおしてください。'; });
 }
 function memoBox(key){ var t=el('textarea'); t.placeholder='メモ（聞きながら書いてOK）'; t.value=memo[key]||''; t.oninput=function(){memo[key]=t.value;}; return t; }
-function player(file,twice){
-  var box=el('div'); var b=el('button','go wide','▶ 放送を聞く（自動で2回流れます）'); var st=el('div','playst','');
-  b.onclick=function(){ playTwice(file,st,b,twice); }; box.appendChild(b); box.appendChild(st); return box;
-}
-function setAns(key,val,redraw){ ans[key]=val; redraw(); updNext(); }
-var nextBtn=null;
 function complete(s){
   if(s.k==='A') return [0,1,2].every(function(j){return ans['A'+s.i+'_'+j]!==undefined;});
   if(s.k==='B') return ans['B'+s.i]!==undefined;
   if(s.k==='C1') return [0,1,2].every(function(j){return ans['C1_'+j]!==undefined;});
-  if(s.k==='C2') return [0,1,2].every(function(j){return [0,1,2].every(function(m){return ans['C2_'+j+'_'+m]!==undefined;});});
+  return [0,1,2].every(function(j){return [0,1,2].every(function(m){return ans['C2_'+j+'_'+m]!==undefined;});});
 }
-function updNext(){ if(nextBtn) nextBtn.disabled=!complete(STEPS[step]); }
-function judgeRows(prefix,choices,L){
+function updBtn(){ if(nextBtn) nextBtn.disabled=!complete(STEPS[step]); }
+function judgeOK(prefix,correct){ for(var j=0;j<3;j++){ if(ans[prefix+'_'+j]!==(j===correct)) return false; } return true; }
+function judgeRows(prefix,choices,locked){
   var wrap=el('div');
   function draw(){
     wrap.innerHTML='';
     choices.forEach(function(c,j){
       var r=el('div','ch'); r.appendChild(el('div','tx',L[j]+'. '+c));
-      ['正','誤'].forEach(function(lab,v){ var b=el('button',ans[prefix+'_'+j]===(v===0)?'on':'',lab); b.onclick=function(){ ans[prefix+'_'+j]=(v===0); draw(); updNext(); }; r.appendChild(b); });
+      ['正','誤'].forEach(function(lab,v){ var b=el('button',ans[prefix+'_'+j]===(v===0)?'on':'',lab); b.disabled=locked; b.onclick=function(){ ans[prefix+'_'+j]=(v===0); draw(); updBtn(); }; r.appendChild(b); });
       wrap.appendChild(r);
     });
   }
   draw(); return wrap;
 }
+// 1ステップぶんの採点と全文
+function stepInfo(s){
+  var rows=[], blocks=[];
+  if(s.k==='A'){ var it=SET.A[s.i];
+    rows.push({label:'A No.'+(s.i+1),ok:judgeOK('A'+s.i,it.ans),detail:'質問：'+it.q+'　正解：'+L[it.ans]+'. '+it.choices[it.ans],why:it.why});
+    blocks.push({title:'A No.'+(s.i+1)+' 全文',file:'set01-A'+(s.i+1),lines:it.script.concat(['Question: '+it.q]).concat(it.choices.map(function(c,m){return L[m].toUpperCase()+'. '+c;})),ja:it.ja});
+  } else if(s.k==='B'){ var it=SET.B[s.i];
+    rows.push({label:'B No.'+(s.i+1),ok:ans['B'+s.i]===it.ans,detail:'質問：'+it.q+'　正解：'+K4[it.ans]+'（'+it.labels[it.ans]+'）',why:it.why});
+    blocks.push({title:'B No.'+(s.i+1)+' 全文',file:'set01-B'+(s.i+1),lines:it.script.concat(['Question: '+it.q]),ja:it.ja});
+  } else if(s.k==='C1'){
+    SET.C1.qs.forEach(function(q,j){ rows.push({label:'C パート1 No.'+(j+1),ok:ans['C1_'+j]===q.ans,detail:'質問：'+q.q+'　正解：'+K3[q.ans]+'. '+q.choices[q.ans],why:q.why}); });
+    blocks.push({title:'C パート1 全文',file:'set01-C1',lines:SET.C1.script.concat(SET.C1.qs.map(function(q,j){return 'Number '+(j+1)+'. '+q.q;})),ja:SET.C1.ja});
+  } else {
+    SET.C2.qs.forEach(function(q,j){ rows.push({label:'C パート2 No.'+(j+1),ok:judgeOK('C2_'+j,q.ans),detail:'質問：'+q.q+'　正解：'+L[q.ans]+'. '+q.choices[q.ans],why:q.why}); });
+    blocks.push({title:'C パート2 全文',file:'set01-C2',lines:SET.C2.script.concat(SET.C2.qs.map(function(q,j){return 'Number '+(j+1)+'. '+q.q;})),ja:SET.C2.ja});
+  }
+  return {rows:rows,blocks:blocks};
+}
+function drawInfo(info,open){
+  var box=el('div');
+  info.rows.forEach(function(r){ var d=el('div','card'); d.appendChild(el('div',r.ok?'ok':'ng',(r.ok?'○ ':'× ')+r.label)); d.appendChild(el('div','',r.detail)); d.appendChild(el('div','hint','ポイント：'+r.why)); box.appendChild(d); });
+  info.blocks.forEach(function(bk){
+    var d=el('div','card'); d.appendChild(el('div','sec',bk.title));
+    var b=el('button','wide','▶ 聞きながら読む（1回）'); b.onclick=function(){ stopAudio(); au=new Audio('audio/l/'+bk.file+'.mp3'); var p=au.play(); if(p&&p.catch) p.catch(function(){}); }; d.appendChild(b);
+    var bs=el('button','wide','■ とめる'); bs.onclick=stopAudio; d.appendChild(bs);
+    bk.lines.forEach(function(t){ d.appendChild(el('div','scr',t)); });
+    var j=el('div','hint',bk.ja); j.style.marginTop='8px'; d.appendChild(j); box.appendChild(d);
+  });
+  return box;
+}
 function show(){
-  stopAudio(); app.innerHTML=''; var s=STEPS[step];
+  stopAudio(); app.innerHTML=''; var s=STEPS[step], locked=!!checked[step];
   app.appendChild(el('div','hint',(step+1)+' / '+STEPS.length));
   var card=el('div','card');
   if(s.k==='A'){
     var it=SET.A[s.i];
     card.appendChild(el('div','sec','A　No.'+(s.i+1)));
     card.appendChild(el('div','ins','対話と質問を聞いて、a・b・cそれぞれが「正しい」か「誤り」かを選ぶ。正しい答えは1つ。'));
-    card.appendChild(player('set01-A'+(s.i+1),true)); card.appendChild(memoBox('A'+s.i));
-    card.appendChild(judgeRows('A'+s.i,it.choices,['a','b','c']));
+    card.appendChild(player('set01-A'+(s.i+1))); card.appendChild(memoBox('A'+s.i));
+    card.appendChild(judgeRows('A'+s.i,it.choices,locked));
   } else if(s.k==='B'){
     var it=SET.B[s.i];
     card.appendChild(el('div','sec','B　No.'+(s.i+1)));
     card.appendChild(el('div','ins','対話と質問を聞いて、答えを表す絵をア〜エから1つ選ぶ。'));
-    card.appendChild(player('set01-B'+(s.i+1),true)); card.appendChild(memoBox('B'+s.i));
-    var g=el('div','pics'); var K=['ア','イ','ウ','エ'];
-    function drawB(){ g.innerHTML=''; it.options.forEach(function(o,j){ var b=el('button','pic'+(ans['B'+s.i]===j?' on':''),o); b.appendChild(el('small','',K[j])); b.onclick=function(){ ans['B'+s.i]=j; drawB(); updNext(); }; g.appendChild(b); }); }
-    drawB(); card.appendChild(g);
+    card.appendChild(player('set01-B'+(s.i+1))); card.appendChild(memoBox('B'+s.i));
+    var g=el('div','pics');
+    (function drawB(){ g.innerHTML=''; it.options.forEach(function(o,j){ var b=el('button','pic'+(ans['B'+s.i]===j?' on':''),o); b.disabled=locked; b.appendChild(el('small','',K4[j])); b.onclick=function(){ ans['B'+s.i]=j; drawB(); updBtn(); }; g.appendChild(b); }); })();
+    card.appendChild(g);
   } else if(s.k==='C1'){
     card.appendChild(el('div','sec','C　パート1'));
     card.appendChild(el('div','ins','ALTの先生の話を聞いて、3つの質問にア〜ウで答える。質問は放送で読まれます。'));
-    card.appendChild(player('set01-C1',true)); card.appendChild(memoBox('C1'));
+    card.appendChild(player('set01-C1')); card.appendChild(memoBox('C1'));
     SET.C1.qs.forEach(function(q,j){
       card.appendChild(el('div','qn','No.'+(j+1)));
-      var box=el('div'); var K=['ア','イ','ウ'];
-      (function(j,q,box){ function d(){ box.innerHTML=''; q.choices.forEach(function(c,m){ var b=el('button','opt'+(ans['C1_'+j]===m?' on':''),K[m]+'  '+c); b.onclick=function(){ ans['C1_'+j]=m; d(); updNext(); }; box.appendChild(b); }); } d(); })(j,q,box);
+      var box=el('div');
+      (function d(){ box.innerHTML=''; q.choices.forEach(function(c,m){ var b=el('button','opt'+(ans['C1_'+j]===m?' on':''),K3[m]+'  '+c); b.disabled=locked; b.onclick=function(){ ans['C1_'+j]=m; d(); updBtn(); }; box.appendChild(b); }); })();
       card.appendChild(box);
     });
   } else {
     card.appendChild(el('div','sec','C　パート2'));
     card.appendChild(el('div','ins','二人の対話を聞いて、3つの質問について、a・b・cが「正しい」か「誤り」かを選ぶ。それぞれ正しい答えは1つ。'));
-    card.appendChild(player('set01-C2',true)); card.appendChild(memoBox('C2'));
-    SET.C2.qs.forEach(function(q,j){ card.appendChild(el('div','qn','No.'+(j+1))); card.appendChild(judgeRows('C2_'+j,q.choices,['a','b','c'])); });
+    card.appendChild(player('set01-C2')); card.appendChild(memoBox('C2'));
+    SET.C2.qs.forEach(function(q,j){ card.appendChild(el('div','qn','No.'+(j+1))); card.appendChild(judgeRows('C2_'+j,q.choices,locked)); });
   }
   app.appendChild(card);
-  nextBtn=el('button','go wide',step+1<STEPS.length?'つぎへ':'答え合わせ'); nextBtn.disabled=true;
-  nextBtn.onclick=function(){ stopAudio(); if(step+1<STEPS.length){step++; show(); window.scrollTo(0,0);} else result(); };
-  app.appendChild(nextBtn); updNext();
-}
-function judgeOK(prefix,correct){ // 正は correct の1つだけ
-  for(var j=0;j<3;j++){ if(ans[prefix+'_'+j]!==(j===correct)) return false; } return true;
+  var practice=(SET.mode==='practice');
+  if(practice && !locked){
+    nextBtn=el('button','go wide','答え合わせ'); nextBtn.disabled=true;
+    nextBtn.onclick=function(){ checked[step]=true; stopAudio(); show(); };
+    app.appendChild(nextBtn); updBtn();
+  } else {
+    if(locked) app.appendChild(drawInfo(stepInfo(s),true));
+    nextBtn=el('button','go wide',step+1<STEPS.length?'つぎへ':'おわり（結果を見る）'); nextBtn.disabled=!complete(s);
+    nextBtn.onclick=function(){ stopAudio(); if(step+1<STEPS.length){step++; show(); window.scrollTo(0,0);} else result(); };
+    app.appendChild(nextBtn);
+  }
 }
 function result(){
-  stopAudio(); app.innerHTML=''; var total=0, max=0, rows=[];
-  function add(label,ok,detail,why,file){ max++; if(ok) total++; rows.push({label:label,ok:ok,detail:detail,why:why}); }
-  var K3=['ア','イ','ウ'], K4=['ア','イ','ウ','エ'], L=['a','b','c'];
-  SET.A.forEach(function(it,i){ add('A No.'+(i+1),judgeOK('A'+i,it.ans),'質問：'+it.q+'　正解：'+L[it.ans]+'. '+it.choices[it.ans],it.why); });
-  SET.B.forEach(function(it,i){ add('B No.'+(i+1),ans['B'+i]===it.ans,'質問：'+it.q+'　正解：'+K4[it.ans]+'（'+it.labels[it.ans]+'）',it.why); });
-  SET.C1.qs.forEach(function(q,j){ add('C パート1 No.'+(j+1),ans['C1_'+j]===q.ans,'質問：'+q.q+'　正解：'+K3[q.ans]+'. '+q.choices[q.ans],q.why); });
-  SET.C2.qs.forEach(function(q,j){ add('C パート2 No.'+(j+1),judgeOK('C2_'+j,q.ans),'質問：'+q.q+'　正解：'+L[q.ans]+'. '+q.choices[q.ans],q.why); });
-  var c=el('div','card'); c.appendChild(el('div','big',total+' / '+max)); 
-  c.appendChild(el('div','hint','まちがえた問題は、スクリプトを見ながら、もう一度聞こう。聞き取れなかった所に、線を引いてみよう。')); app.appendChild(c);
-  rows.forEach(function(r){ var d=el('div','card'); var h=el('div',r.ok?'ok':'ng',(r.ok?'○ ':'× ')+r.label); d.appendChild(h); d.appendChild(el('div','',r.detail)); d.appendChild(el('div','hint','ポイント：'+r.why)); app.appendChild(d); });
-  // scripts
-  var sc=el('div','card'); sc.appendChild(el('div','sec','スクリプトと日本語訳'));
-  function block(title,file,lines,ja){
-    var dt=el('details'); dt.appendChild(el('summary','',title));
-    var b=el('button','wide','▶ 聞く'); b.onclick=function(){ stopAudio(); au=new Audio('audio/l/'+file+'.mp3'); var p=au.play(); if(p&&p.catch) p.catch(function(){}); }; dt.appendChild(b);
-    lines.forEach(function(t){ dt.appendChild(el('div','scr',t)); });
-    var j=el('div','hint',ja); j.style.marginTop='8px'; dt.appendChild(j);
-    if(memo[title]) {} sc.appendChild(dt);
-  }
-  SET.A.forEach(function(it,i){ block('A No.'+(i+1),'set01-A'+(i+1),it.script,it.ja); });
-  SET.B.forEach(function(it,i){ block('B No.'+(i+1),'set01-B'+(i+1),it.script,it.ja); });
-  block('C パート1','set01-C1',SET.C1.script,SET.C1.ja);
-  block('C パート2','set01-C2',SET.C2.script,SET.C2.ja);
-  app.appendChild(sc);
+  stopAudio(); app.innerHTML=''; var total=0,max=0;
+  STEPS.forEach(function(s){ stepInfo(s).rows.forEach(function(r){ max++; if(r.ok) total++; }); });
+  var c=el('div','card'); c.appendChild(el('div','big',total+' / '+max));
+  c.appendChild(el('div','hint','まちがえた問題は、全文を見ながら、もう一度聞こう。聞き取れなかった所に、線を引いてみよう。')); app.appendChild(c);
   var b1=el('button','go wide','もう一度やる'); b1.onclick=function(){ start('set01'); }; app.appendChild(b1);
   var b2=el('button','wide','トップにもどる'); b2.onclick=home; app.appendChild(b2);
 }
