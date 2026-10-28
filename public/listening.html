@@ -91,7 +91,7 @@ function home(){
   stopAudio(); app.innerHTML='';
   var c=el('div','card');
   c.appendChild(el('div','sec','石川県の入試にあわせた形'));
-  ['A：短い対話を聞いて、a・b・cが正しいか誤りかを判断する。','B：対話を聞いて、答えにあたる絵を選ぶ。','C：長い放送（パート1）と長い対話（パート2）を聞いて、3問ずつ答える。','放送はぜんぶ2回。メモを取ってOK。'].forEach(function(t){var d=el('div','',t); d.style.margin='4px 0'; c.appendChild(d);});
+  ['A：短い対話と質問を聞いて、正しい答えをa・b・cから選ぶ。','B：対話を聞いて、答えにあたる絵を選ぶ。','C：長い放送（パート1）と長い対話（パート2）を聞いて、3問ずつ答える。','放送はぜんぶ2回。メモを取ってOK。'].forEach(function(t){var d=el('div','',t); d.style.margin='4px 0'; c.appendChild(d);});
   app.appendChild(c);
   var c2=el('div','card'); c2.appendChild(el('div','sec','練習のしかた'));
   ['① 1問ずつ聞く。何回でも聞いていい（「1回だけ」ボタンで何度でも）。','② 答えを選んだら「答え合わせ」。英語の全文と日本語訳が出るよ。','③ 全文を見ながら、もう一度聞こう。聞き取れなかった所がわかる。'].forEach(function(t){var d=el('div','',t); d.style.margin='4px 0'; c2.appendChild(d);});
@@ -109,24 +109,20 @@ function start(id){
 }
 function memoBox(key){ var t=el('textarea'); t.placeholder='メモ（聞きながら書いてOK）'; t.value=memo[key]||''; t.oninput=function(){memo[key]=t.value;}; return t; }
 function complete(s){
-  if(s.k==='A') return [0,1,2].every(function(j){return ans['A'+s.i+'_'+j]!==undefined;});
+  if(s.k==='A') return ans['A'+s.i]!==undefined;
   if(s.k==='B') return ans['B'+s.i]!==undefined;
   if(s.k==='C1') return [0,1,2].every(function(j){return ans['C1_'+j]!==undefined;});
-  return [0,1,2].every(function(j){return [0,1,2].every(function(m){return ans['C2_'+j+'_'+m]!==undefined;});});
+  return [0,1,2].every(function(j){return ans['C2_'+j]!==undefined;});
 }
 function updBtn(){ if(nextBtn) nextBtn.disabled=!complete(STEPS[step]); }
-function judgeOK(prefix,correct){ for(var j=0;j<3;j++){ if(ans[prefix+'_'+j]!==(j===correct)) return false; } return true; }
-function judgeRows(prefix,choices,locked){
+function judgeOK(key,correct){ return ans[key]===correct; }
+function judgeRows(key,choices,locked){
   var wrap=el('div');
-  function draw(){
+  (function draw(){
     wrap.innerHTML='';
-    choices.forEach(function(c,j){
-      var r=el('div','ch'); r.appendChild(el('div','tx',L[j]+'. '+c));
-      ['正','誤'].forEach(function(lab,v){ var b=el('button',ans[prefix+'_'+j]===(v===0)?'on':'',lab); b.disabled=locked; b.onclick=function(){ ans[prefix+'_'+j]=(v===0); draw(); updBtn(); }; r.appendChild(b); });
-      wrap.appendChild(r);
-    });
-  }
-  draw(); return wrap;
+    choices.forEach(function(c,j){ var b=el('button','opt'+(ans[key]===j?' on':''),L[j]+'.  '+c); b.disabled=locked; b.onclick=function(){ ans[key]=j; draw(); updBtn(); }; wrap.appendChild(b); });
+  })();
+  return wrap;
 }
 // 1ステップぶんの採点と全文
 function stepInfo(s){
@@ -165,7 +161,7 @@ function show(){
   if(s.k==='A'){
     var it=SET.A[s.i];
     card.appendChild(el('div','sec','A　No.'+(s.i+1)));
-    card.appendChild(el('div','ins','対話と質問を聞いて、a・b・cそれぞれが「正しい」か「誤り」かを選ぶ。正しい答えは1つ。'));
+    card.appendChild(el('div','ins','対話と質問を聞いて、正しい答えをa・b・cから1つ選ぶ。'));
     card.appendChild(player(SET.id+'-A'+(s.i+1))); card.appendChild(memoBox('A'+s.i));
     card.appendChild(judgeRows('A'+s.i,it.choices,locked));
   } else if(s.k==='B'){
@@ -188,7 +184,7 @@ function show(){
     });
   } else {
     card.appendChild(el('div','sec','C　パート2'));
-    card.appendChild(el('div','ins','二人の対話を聞いて、3つの質問について、a・b・cが「正しい」か「誤り」かを選ぶ。それぞれ正しい答えは1つ。'));
+    card.appendChild(el('div','ins','二人の対話を聞いて、3つの質問に、a・b・cから1つずつ選んで答える。質問は放送で読まれます。'));
     card.appendChild(player(SET.id+'-C2')); card.appendChild(memoBox('C2'));
     SET.C2.qs.forEach(function(q,j){ card.appendChild(el('div','qn','No.'+(j+1))); card.appendChild(judgeRows('C2_'+j,q.choices,locked)); });
   }
