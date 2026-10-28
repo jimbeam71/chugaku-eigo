@@ -90,7 +90,7 @@ function player(file){
 function home(){
   stopAudio(); app.innerHTML='';
   var c=el('div','card');
-  c.appendChild(el('div','sec','石川県の入試にあわせた形'));
+  c.appendChild(el('div','sec','高校入試にあわせた形'));
   ['A：短い対話と質問を聞いて、正しい答えをa・b・cから選ぶ。','B：対話を聞いて、答えにあたる絵を選ぶ。','C：長い放送（パート1）と長い対話（パート2）を聞いて、3問ずつ答える。','放送はぜんぶ2回。メモを取ってOK。'].forEach(function(t){var d=el('div','',t); d.style.margin='4px 0'; c.appendChild(d);});
   app.appendChild(c);
   var c2=el('div','card'); c2.appendChild(el('div','sec','練習のしかた'));
