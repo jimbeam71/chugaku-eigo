@@ -1,0 +1,166 @@
+{
+ "id": "lv1-09",
+ "title": "第1段階 はじめの一歩 9",
+ "level": 1,
+ "mode": "practice",
+ "A": [
+  {
+   "q": "What will the woman say next?",
+   "choices": [
+    "Thank you. Where is the bus stop?",
+    "It's a big zoo.",
+    "Yes, I like animals."
+   ],
+   "ans": 0,
+   "ja": "（女）すみません。このバスは動物園に行きますか。／（男）いいえ。5番のバスに乗ってください。",
+   "why": "教えてもらったので、お礼と次の質問が自然。",
+   "script": [
+    "Woman: Excuse me. Does this bus go to the zoo?",
+    "Man: No. Take the number five bus."
+   ]
+  },
+  {
+   "q": "What did Nana do in Kyoto?",
+   "choices": [
+    "She visited temples.",
+    "She swam in the sea.",
+    "She played tennis."
+   ],
+   "ans": 0,
+   "ja": "（男）ナナ、京都旅行はどうだった？／（ナナ）すばらしかったよ。たくさんのお寺に行ったの。",
+   "why": "visited many temples。",
+   "script": [
+    "Man: How was your trip to Kyoto, Nana?",
+    "Woman: It was great. I visited many temples."
+   ]
+  }
+ ],
+ "B": [
+  {
+   "q": "How did Jun come?",
+   "options": [
+    "🚶",
+    "🚲",
+    "🚌",
+    "🚆"
+   ],
+   "labels": [
+    "歩き",
+    "自転車",
+    "バス",
+    "電車"
+   ],
+   "ans": 3,
+   "ja": "（女）ジュン、ここまでどうやって来たの？／（ジュン）電車で来たよ。30分かかった。",
+   "why": "by train = 電車で。",
+   "script": [
+    "Woman: How did you come here, Jun?",
+    "Man: I came by train. It took thirty minutes."
+   ]
+  },
+  {
+   "q": "What will the girl do this summer?",
+   "options": [
+    "🎡",
+    "🏖️",
+    "🏯",
+    "⛺"
+   ],
+   "labels": [
+    "遊園地",
+    "海水浴",
+    "お城めぐり",
+    "キャンプ"
+   ],
+   "ans": 3,
+   "ja": "（男）この夏はどこへ行くの？／（女）家族と山へ行くよ。キャンプをするの。",
+   "why": "camping = キャンプ。",
+   "script": [
+    "Man: Where will you go this summer?",
+    "Woman: I'm going to the mountains with my family. We will go camping."
+   ]
+  }
+ ],
+ "C1": {
+  "script": [
+   "Hello. I'm Kate. Last summer, I went to Hokkaido with my family. We took a plane from Tokyo. It took one hour and a half. In Hokkaido, we ate fresh seafood. We also visited a farm and saw many cows. I drank milk there. It was so good. Next summer, I want to go to Okinawa."
+  ],
+  "ja": "こんにちは。ケイトです。去年の夏、家族と北海道へ行きました。東京から飛行機に乗りました。1時間半かかりました。北海道では、新鮮な海の幸を食べました。牧場にも行って、たくさんの牛を見ました。そこで牛乳を飲みました。とてもおいしかったです。来年の夏は、沖縄へ行きたいです。",
+  "qs": [
+   {
+    "q": "How did Kate's family go to Hokkaido?",
+    "choices": [
+     "By plane.",
+     "By bus.",
+     "By train."
+    ],
+    "ans": 0,
+    "why": "We took a plane from Tokyo."
+   },
+   {
+    "q": "What did they see at the farm?",
+    "choices": [
+     "Horses.",
+     "Sheep.",
+     "Cows."
+    ],
+    "ans": 2,
+    "why": "saw many cows。"
+   },
+   {
+    "q": "Where does Kate want to go next summer?",
+    "choices": [
+     "Kyoto.",
+     "Okinawa.",
+     "Osaka."
+    ],
+    "ans": 1,
+    "why": "Next summer, I want to go to Okinawa. 北海道は『去年』行った所。"
+   }
+  ]
+ },
+ "C2": {
+  "script": [
+   "Mika: Ben, I'm going to Osaka next week.",
+   "Ben: Wow! How will you go?",
+   "Mika: I'll take the bullet train.",
+   "Ben: How long does it take?",
+   "Mika: About two and a half hours.",
+   "Ben: Please buy me some takoyaki.",
+   "Mika: OK."
+  ],
+  "ja": "（ミカ）ベン、来週、大阪に行くよ。／（ベン）わあ！どうやって行くの？／（ミカ）新幹線に乗るよ。／（ベン）どのくらいかかるの？／（ミカ）2時間半くらい。／（ベン）たこ焼きを買ってきて。／（ミカ）わかった。",
+  "qs": [
+   {
+    "q": "Where will Mika go?",
+    "choices": [
+     "Tokyo.",
+     "Osaka.",
+     "Kyoto."
+    ],
+    "ans": 1,
+    "why": "I'm going to Osaka next week."
+   },
+   {
+    "q": "How will Mika go?",
+    "choices": [
+     "By plane.",
+     "By bullet train.",
+     "By car."
+    ],
+    "ans": 1,
+    "why": "I'll take the bullet train."
+   },
+   {
+    "q": "What does Ben want?",
+    "choices": [
+     "A book.",
+     "Takoyaki.",
+     "A T-shirt."
+    ],
+    "ans": 1,
+    "why": "Please buy me some takoyaki."
+   }
+  ]
+ }
+}

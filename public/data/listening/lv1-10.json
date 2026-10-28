@@ -1,0 +1,165 @@
+{
+ "id": "lv1-10",
+ "title": "第1段階 はじめの一歩 10",
+ "level": 1,
+ "mode": "practice",
+ "A": [
+  {
+   "q": "What will the man say next?",
+   "choices": [
+    "Please go to bed early today.",
+    "You're welcome.",
+    "I'm happy to hear that."
+   ],
+   "ans": 0,
+   "ja": "（男）ミナ、つかれた顔をしているね。どうしたの？／（女）昨夜よく眠れなかったの。",
+   "why": "眠れなかった人に、「今日は早く寝てね」が自然。",
+   "script": [
+    "Man: You look tired, Mina. What's wrong?",
+    "Woman: I didn't sleep well last night."
+   ]
+  },
+  {
+   "q": "What time will they meet?",
+   "choices": [
+    "At seven.",
+    "At seven thirty.",
+    "At eight."
+   ],
+   "ans": 0,
+   "ja": "（女）映画は何時に始まるの？／（男）7時30分だよ。7時に会おう。",
+   "why": "始まる時間と、会う時間はちがう。",
+   "script": [
+    "Woman: What time does the movie start?",
+    "Man: At seven thirty. Let's meet at seven."
+   ]
+  }
+ ],
+ "B": [
+  {
+   "q": "What's wrong with Emily?",
+   "options": [
+    "🤒",
+    "🦷",
+    "🤧",
+    "🤕"
+   ],
+   "labels": [
+    "ねつがある",
+    "歯がいたい",
+    "かぜ（くしゃみ）",
+    "頭がいたい"
+   ],
+   "ans": 3,
+   "ja": "（男）エミリー、だいじょうぶ？／（女）ううん。頭がいたいの。",
+   "why": "headache = 頭痛。",
+   "script": [
+    "Man: Are you OK, Emily?",
+    "Woman: No. I have a headache."
+   ]
+  },
+  {
+   "q": "How does Sam feel?",
+   "options": [
+    "😊",
+    "😠",
+    "😴",
+    "😢"
+   ],
+   "labels": [
+    "うれしい",
+    "おこっている",
+    "ねむい",
+    "悲しい"
+   ],
+   "ans": 0,
+   "ja": "（女）サム、気分はどう？／（サム）うれしいよ！テストでいい点をとったんだ。",
+   "why": "happy = うれしい。",
+   "script": [
+    "Woman: How do you feel, Sam?",
+    "Man: I'm happy! I got a good score on the test."
+   ]
+  }
+ ],
+ "C1": {
+  "script": [
+   "Hello. I'm Mike. I'm a doctor. Every day, many people come to see me. Some have a cold, and some have a stomachache. I tell them to rest and drink water. I also tell them to eat good food. My message is simple: sleep well, eat well, and move your body. I walk to work every day. It takes twenty minutes."
+  ],
+  "ja": "こんにちは。マイクです。医者です。毎日、たくさんの人がわたしに会いに来ます。かぜの人も、おなかがいたい人もいます。わたしは、休んで水を飲むように言います。いい食事をとるようにも言います。わたしのメッセージは簡単です。よく寝て、よく食べて、体を動かそう。わたしは毎日、歩いて仕事に行きます。20分かかります。",
+  "qs": [
+   {
+    "q": "What is Mike's job?",
+    "choices": [
+     "A cook.",
+     "A teacher.",
+     "A doctor."
+    ],
+    "ans": 2,
+    "why": "I'm a doctor."
+   },
+   {
+    "q": "What does Mike tell people to do?",
+    "choices": [
+     "Study hard.",
+     "Go shopping.",
+     "Rest and drink water."
+    ],
+    "ans": 2,
+    "why": "I tell them to rest and drink water."
+   },
+   {
+    "q": "How does Mike go to work?",
+    "choices": [
+     "He drives.",
+     "He takes a bus.",
+     "He walks."
+    ],
+    "ans": 2,
+    "why": "I walk to work every day."
+   }
+  ]
+ },
+ "C2": {
+  "script": [
+   "Lisa: Sam, you look sleepy.",
+   "Sam: Yes. I played games until two in the morning.",
+   "Lisa: Two? That's too late!",
+   "Sam: I know. I have a test today, but I can't think well.",
+   "Lisa: Here. Drink this water and wash your face.",
+   "Sam: Thanks, Lisa."
+  ],
+  "ja": "（リサ）サム、ねむそうだね。／（サム）うん。夜中の2時までゲームをしていたんだ。／（リサ）2時？遅すぎるよ！／（サム）わかってる。今日テストがあるのに、うまく考えられない。／（リサ）はい。この水を飲んで、顔を洗いなよ。／（サム）ありがとう、リサ。",
+  "qs": [
+   {
+    "q": "How does Sam look?",
+    "choices": [
+     "Angry.",
+     "Happy.",
+     "Sleepy."
+    ],
+    "ans": 2,
+    "why": "you look sleepy。"
+   },
+   {
+    "q": "What time did Sam play games until?",
+    "choices": [
+     "Two in the morning.",
+     "Ten.",
+     "Midnight."
+    ],
+    "ans": 0,
+    "why": "until two in the morning."
+   },
+   {
+    "q": "What does Lisa tell Sam to do?",
+    "choices": [
+     "Study more.",
+     "Drink water and wash his face.",
+     "Go home."
+    ],
+    "ans": 1,
+    "why": "Drink this water and wash your face."
+   }
+  ]
+ }
+}

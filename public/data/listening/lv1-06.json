@@ -1,0 +1,164 @@
+{
+ "id": "lv1-06",
+ "title": "第1段階 はじめの一歩 6",
+ "level": 1,
+ "mode": "practice",
+ "A": [
+  {
+   "q": "What will the man say next?",
+   "choices": [
+    "Yes, it is.",
+    "I'll take it.",
+    "It's Sunday."
+   ],
+   "ans": 1,
+   "ja": "（男）このTシャツはいくらですか。／（女）2000円です。",
+   "why": "値段を聞いて、「それにします」と買う流れが自然。",
+   "script": [
+    "Man: How much is this T-shirt?",
+    "Woman: It's two thousand yen."
+   ]
+  },
+  {
+   "q": "What color bags does the shop have?",
+   "choices": [
+    "Blue and black.",
+    "Red and white.",
+    "Green and yellow."
+   ],
+   "ans": 0,
+   "ja": "（女）赤いかばんがほしいです。／（男）すみません、青と黒しかありません。",
+   "why": "only のあとが、ある物。赤は『ない』。",
+   "script": [
+    "Woman: I want a red bag.",
+    "Man: Sorry, we only have blue and black ones."
+   ]
+  }
+ ],
+ "B": [
+  {
+   "q": "What does Lisa want?",
+   "options": [
+    "🧤",
+    "☂️",
+    "👜",
+    "🧢"
+   ],
+   "labels": [
+    "手ぶくろ",
+    "かさ",
+    "かばん",
+    "ぼうし"
+   ],
+   "ans": 1,
+   "ja": "（男）リサ、何をさがしているの？／（女）かさがほしいの。今日は雨だから。",
+   "why": "umbrella = かさ。",
+   "script": [
+    "Man: What are you looking for, Lisa?",
+    "Woman: I want an umbrella. It's rainy today."
+   ]
+  },
+  {
+   "q": "What will the man buy?",
+   "options": [
+    "🍎🍎🍎🍎🍊",
+    "🍎🍎🍎🍊🍊",
+    "🍎🍊🍊🍊🍊",
+    "🍎🍎🍊🍊🍊"
+   ],
+   "labels": [
+    "りんご4つとオレンジ1つ",
+    "りんご3つとオレンジ2つ",
+    "りんご1つとオレンジ4つ",
+    "りんご2つとオレンジ3つ"
+   ],
+   "ans": 1,
+   "ja": "（女）りんごはいくつにしますか。／（男）3つください。それとオレンジを2つ。",
+   "why": "数と果物を結びつけて聞く。",
+   "script": [
+    "Woman: How many apples do you want?",
+    "Man: Three, please. And two oranges."
+   ]
+  }
+ ],
+ "C1": {
+  "script": [
+   "Hello. I'm Jenny. Last Saturday, I went shopping with my grandmother. We went to a big mall. First, we bought a hat for my grandfather. It was blue. Then, we ate lunch at a noodle shop. I had ramen, and my grandmother had udon. After lunch, we bought a cake and went home. It was a nice day."
+  ],
+  "ja": "こんにちは。ジェニーです。先週の土曜日、祖母と買い物に行きました。大きなモールへ行きました。まず、祖父のぼうしを買いました。青いぼうしでした。それから、めん屋で昼ごはんを食べました。わたしはラーメン、祖母はうどんを食べました。昼ごはんのあと、ケーキを買って帰りました。すてきな日でした。",
+  "qs": [
+   {
+    "q": "Who did Jenny go shopping with?",
+    "choices": [
+     "Her friend.",
+     "Her mother.",
+     "Her grandmother."
+    ],
+    "ans": 2,
+    "why": "with my grandmother。"
+   },
+   {
+    "q": "What did they buy for Jenny's grandfather?",
+    "choices": [
+     "A bag.",
+     "Shoes.",
+     "A hat."
+    ],
+    "ans": 2,
+    "why": "we bought a hat for my grandfather。ケーキは最後に買った。"
+   },
+   {
+    "q": "What did Jenny have for lunch?",
+    "choices": [
+     "Ramen.",
+     "Udon.",
+     "Curry."
+    ],
+    "ans": 0,
+    "why": "I had ramen, and my grandmother had udon. 食べた人を聞き分ける。"
+   }
+  ]
+ },
+ "C2": {
+  "script": [
+   "Mike: Mina, what did you do last weekend?",
+   "Mina: I went to the mall with my sister.",
+   "Mike: What did you buy?",
+   "Mina: I bought a pink bag. My sister bought shoes.",
+   "Mike: Nice. I stayed home and played games."
+  ],
+  "ja": "（マイク）ミナ、先週末は何をしたの？／（ミナ）姉とモールへ行ったよ。／（マイク）何を買ったの？／（ミナ）ピンクのかばんを買ったの。姉はくつを買ったよ。／（マイク）いいね。ぼくは家にいて、ゲームをした。",
+  "qs": [
+   {
+    "q": "Who did Mina go to the mall with?",
+    "choices": [
+     "Her sister.",
+     "Her friend.",
+     "Her mother."
+    ],
+    "ans": 0,
+    "why": "with my sister。"
+   },
+   {
+    "q": "What did Mina buy?",
+    "choices": [
+     "A hat.",
+     "Shoes.",
+     "A pink bag."
+    ],
+    "ans": 2,
+    "why": "I bought a pink bag. Shoes はお姉さんが買った物。"
+   },
+   {
+    "q": "What did Mike do last weekend?",
+    "choices": [
+     "He went to the mall.",
+     "He studied.",
+     "He played games at home."
+    ],
+    "ans": 2,
+    "why": "I stayed home and played games."
+   }
+  ]
+ }
+}

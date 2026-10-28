@@ -1,0 +1,165 @@
+{
+ "id": "lv1-08",
+ "title": "第1段階 はじめの一歩 8",
+ "level": 1,
+ "mode": "practice",
+ "A": [
+  {
+   "q": "What will the man say next?",
+   "choices": [
+    "I'm sorry. I can't.",
+    "Great. Let's meet at the station.",
+    "It's too small."
+   ],
+   "ans": 1,
+   "ja": "（男）明日、野球の試合を見に行くんだ。いっしょに来る、ゆい？／（女）うん、行きたい。",
+   "why": "「行きたい」と答えたので、「いいね。駅で会おう」が自然。",
+   "script": [
+    "Man: I'm going to a baseball game tomorrow. Do you want to come, Yui?",
+    "Woman: Yes, I'd love to."
+   ]
+  },
+  {
+   "q": "What does Dan take pictures of?",
+   "choices": [
+    "Flowers.",
+    "Animals.",
+    "Food."
+   ],
+   "ans": 1,
+   "ja": "（女）ダン、しゅみは何？／（ダン）写真をとるのが好き。動物の写真をとるんだ。",
+   "why": "of のあとが、写真のテーマ。",
+   "script": [
+    "Woman: What's your hobby, Dan?",
+    "Man: I like taking pictures. I take pictures of animals."
+   ]
+  }
+ ],
+ "B": [
+  {
+   "q": "What sport does Emi play?",
+   "options": [
+    "🏀",
+    "🏊",
+    "⚽",
+    "🎾"
+   ],
+   "labels": [
+    "バスケットボール",
+    "水泳",
+    "サッカー",
+    "テニス"
+   ],
+   "ans": 3,
+   "ja": "（男）エミ、何かスポーツをしている？／（女）うん。土曜日にテニスをするよ。",
+   "why": "tennis。",
+   "script": [
+    "Man: Do you play any sports, Emi?",
+    "Woman: Yes. I play tennis on Saturdays."
+   ]
+  },
+  {
+   "q": "What did Sam do first?",
+   "options": [
+    "🚲",
+    "📺",
+    "📖",
+    "🎹"
+   ],
+   "labels": [
+    "自転車",
+    "テレビ",
+    "読書",
+    "ピアノ"
+   ],
+   "ans": 3,
+   "ja": "（女）サム、昨日は何をしたの？／（サム）2時間ピアノをひいたよ。それから本を読んだ。",
+   "why": "first の問題。Then（それから）の前が最初。",
+   "script": [
+    "Woman: What did you do yesterday, Sam?",
+    "Man: I played the piano for two hours. Then I read a book."
+   ]
+  }
+ ],
+ "C1": {
+  "script": [
+   "Hello. I'm Amy. I love music. I play the violin. I started it when I was six years old. I practice every day for one hour. Last month, I played it at a concert at my school. Many people came. I was very nervous, but I enjoyed it. I want to play the violin in a big hall someday."
+  ],
+  "ja": "こんにちは。エイミーです。音楽が大好きです。バイオリンをひきます。6歳のときに始めました。毎日1時間練習します。先月、学校のコンサートでひきました。たくさんの人が来ました。とても緊張しましたが、楽しめました。いつか大きなホールでバイオリンをひきたいです。",
+  "qs": [
+   {
+    "q": "What does Amy play?",
+    "choices": [
+     "The violin.",
+     "The guitar.",
+     "The piano."
+    ],
+    "ans": 0,
+    "why": "I play the violin."
+   },
+   {
+    "q": "How long does Amy practice every day?",
+    "choices": [
+     "Two hours.",
+     "One hour.",
+     "Thirty minutes."
+    ],
+    "ans": 1,
+    "why": "I practice every day for one hour."
+   },
+   {
+    "q": "Where did Amy play last month?",
+    "choices": [
+     "In a big hall.",
+     "At a concert at her school.",
+     "At home."
+    ],
+    "ans": 1,
+    "why": "Last month, I played it at a concert at my school. 大きなホールは『いつか』の夢。"
+   }
+  ]
+ },
+ "C2": {
+  "script": [
+   "Leo: Aya, I heard you like dancing.",
+   "Aya: Yes. I dance every Tuesday and Friday.",
+   "Leo: That's great. Do you dance at school?",
+   "Aya: No, I go to a dance school near the station.",
+   "Leo: I want to try it.",
+   "Aya: Come with me this Friday."
+  ],
+  "ja": "（レオ）アヤ、ダンスが好きだって聞いたよ。／（アヤ）うん。毎週火曜日と金曜日におどるの。／（レオ）すごいね。学校でおどるの？／（アヤ）ううん、駅の近くのダンス教室に行っているの。／（レオ）やってみたいな。／（アヤ）今度の金曜日、いっしょに来てよ。",
+  "qs": [
+   {
+    "q": "When does Aya dance?",
+    "choices": [
+     "Monday and Friday.",
+     "Saturday and Sunday.",
+     "Tuesday and Friday."
+    ],
+    "ans": 2,
+    "why": "every Tuesday and Friday。"
+   },
+   {
+    "q": "Where does Aya dance?",
+    "choices": [
+     "At her school.",
+     "At a dance school near the station.",
+     "At home."
+    ],
+    "ans": 1,
+    "why": "No は『学校ではない』。駅の近くのダンス教室。"
+   },
+   {
+    "q": "When will Leo go with Aya?",
+    "choices": [
+     "This Friday.",
+     "Next Tuesday.",
+     "Tomorrow."
+    ],
+    "ans": 0,
+    "why": "Come with me this Friday."
+   }
+  ]
+ }
+}

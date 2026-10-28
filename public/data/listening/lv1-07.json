@@ -1,0 +1,165 @@
+{
+ "id": "lv1-07",
+ "title": "第1段階 はじめの一歩 7",
+ "level": 1,
+ "mode": "practice",
+ "A": [
+  {
+   "q": "What will the mother say next?",
+   "choices": [
+    "You're welcome.",
+    "I'm fine.",
+    "OK. Please hurry."
+   ],
+   "ans": 2,
+   "ja": "（母）レオ、夕ごはんができたよ。／（レオ）今行くよ、お母さん。ちょっと待って。",
+   "why": "「ちょっと待って」と言われたので、「いいよ。急いでね」が自然。",
+   "script": [
+    "Woman: Dinner is ready, Leo.",
+    "Man: I'm coming, Mom. Just a minute."
+   ]
+  },
+  {
+   "q": "How many people are in Amy's family?",
+   "choices": [
+    "Five.",
+    "Six.",
+    "Four."
+   ],
+   "ans": 0,
+   "ja": "（男）エイミー、家族は何人？／（エイミー）5人。両親と、兄と、姉と、わたし。",
+   "why": "数えて確かめる。parents(2)+brother+sister+me=5。",
+   "script": [
+    "Man: How many people are there in your family, Amy?",
+    "Woman: Five. My parents, my brother, my sister, and me."
+   ]
+  }
+ ],
+ "B": [
+  {
+   "q": "Where is the phone?",
+   "options": [
+    "📱🚪",
+    "📱🛏️",
+    "📱📖",
+    "📱🛋️"
+   ],
+   "labels": [
+    "ドアのそば",
+    "ベッドの上",
+    "本のとなり",
+    "ソファの上"
+   ],
+   "ans": 2,
+   "ja": "（女）お父さん、わたしの電話はどこ？／（父）テーブルの上、本のとなりだよ。",
+   "why": "next to = となり。",
+   "script": [
+    "Woman: Where is my phone, Dad?",
+    "Man: It's on the table, next to the book."
+   ]
+  },
+  {
+   "q": "What does the mother do in the afternoon?",
+   "options": [
+    "📺",
+    "🍳",
+    "📖",
+    "🧹"
+   ],
+   "labels": [
+    "テレビ",
+    "料理",
+    "本を読む",
+    "そうじ"
+   ],
+   "ans": 2,
+   "ja": "（男）お母さん、日曜日は何をしているの？／（母）たいてい午前中に家のそうじをするよ。午後は本を読むの。",
+   "why": "in the morning と in the afternoon を聞き分ける。",
+   "script": [
+    "Man: What do you do on Sundays, Mom?",
+    "Woman: I usually clean the house in the morning. In the afternoon, I read books."
+   ]
+  }
+ ],
+ "C1": {
+  "script": [
+   "Hello. I'm Paul. I live with my family in a small house. There are four people in my family. My father is a bus driver. He gets up at five every morning. My mother is a nurse. She works at a hospital. I have a sister. She is ten years old. We eat dinner together every night."
+  ],
+  "ja": "こんにちは。ポールです。家族と小さな家に住んでいます。家族は4人です。父はバスの運転手です。毎朝5時に起きます。母は看護師です。病院で働いています。姉が1人います。10歳です。毎晩、いっしょに夕ごはんを食べます。",
+  "qs": [
+   {
+    "q": "How many people are in Paul's family?",
+    "choices": [
+     "Three.",
+     "Four.",
+     "Five."
+    ],
+    "ans": 1,
+    "why": "There are four people in my family."
+   },
+   {
+    "q": "What is Paul's father's job?",
+    "choices": [
+     "A bus driver.",
+     "A nurse.",
+     "A doctor."
+    ],
+    "ans": 0,
+    "why": "My father is a bus driver. nurse はお母さん。"
+   },
+   {
+    "q": "How old is Paul's sister?",
+    "choices": [
+     "Eight.",
+     "Twelve.",
+     "Ten."
+    ],
+    "ans": 2,
+    "why": "She is ten years old."
+   }
+  ]
+ },
+ "C2": {
+  "script": [
+   "Yuki: Tom, what does your mother do?",
+   "Tom: She is a nurse. She works at night, so she sleeps in the morning.",
+   "Yuki: Oh, that's hard.",
+   "Tom: Yes. So I cook breakfast every day.",
+   "Yuki: Really? What do you cook?",
+   "Tom: I usually cook eggs and toast."
+  ],
+  "ja": "（ユキ）トム、お母さんは何の仕事をしているの？／（トム）看護師だよ。夜に働くから、朝は寝ているんだ。／（ユキ）わあ、大変だね。／（トム）うん。だから毎日ぼくが朝ごはんを作るんだ。／（ユキ）本当？何を作るの？／（トム）たいてい卵とトーストだよ。",
+  "qs": [
+   {
+    "q": "What is Tom's mother's job?",
+    "choices": [
+     "A teacher.",
+     "A nurse.",
+     "A cook."
+    ],
+    "ans": 1,
+    "why": "She is a nurse."
+   },
+   {
+    "q": "When does Tom's mother sleep?",
+    "choices": [
+     "In the morning.",
+     "In the afternoon.",
+     "At night."
+    ],
+    "ans": 0,
+    "why": "She works at night, so she sleeps in the morning."
+   },
+   {
+    "q": "What does Tom cook?",
+    "choices": [
+     "Curry.",
+     "Rice and soup.",
+     "Eggs and toast."
+    ],
+    "ans": 2,
+    "why": "I usually cook eggs and toast."
+   }
+  ]
+ }
+}
