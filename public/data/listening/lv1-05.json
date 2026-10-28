@@ -27,10 +27,10 @@
     "Sing songs."
    ],
    "ans": 2,
-   "ja": "（女）加藤先生、学園祭はいつですか。／（加藤先生）10月10日だよ。ステージで歌をうたうよ。",
+   "ja": "（女）すみません、学園祭はいつですか。／（先生）10月10日だよ。ステージで歌をうたうよ。",
    "why": "We will sing songs on the stage.",
    "script": [
-    "Woman: Mr. Kato, when is the school festival?",
+    "Woman: Excuse me, when is the school festival?",
     "Man: It's on October tenth. We will sing songs on the stage."
    ]
   }
@@ -83,12 +83,12 @@
  ],
  "C1": {
   "script": [
-   "Hello, everyone. I'm Ms. Green, your new English teacher. I'm from New Zealand. I came to Japan two weeks ago. I like Japanese food, especially sushi. I also like to play the piano. In my free time, I play it at home. If you like music, please talk to me. Let's enjoy English together."
+   "Hello, everyone. I'm Emily, your new English teacher. I'm from New Zealand. I came to Japan two weeks ago. I like Japanese food, especially sushi. I also like to play the piano. In my free time, I play it at home. If you like music, please talk to me. Let's enjoy English together."
   ],
-  "ja": "みなさん、こんにちは。新しい英語の先生のグリーンです。ニュージーランド出身です。2週間前に日本に来ました。日本食、とくにすしが好きです。ピアノをひくことも好きです。ひまなときは、家でひきます。音楽が好きなら、話しかけてください。いっしょに英語を楽しみましょう。",
+  "ja": "みなさん、こんにちは。新しい英語の先生のエミリーです。ニュージーランド出身です。2週間前に日本に来ました。日本食、とくにすしが好きです。ピアノをひくことも好きです。ひまなときは、家でひきます。音楽が好きなら、話しかけてください。いっしょに英語を楽しみましょう。",
   "qs": [
    {
-    "q": "Where is Ms. Green from?",
+    "q": "Where is Emily from?",
     "choices": [
      "America.",
      "New Zealand.",
@@ -98,7 +98,7 @@
     "why": "I'm from New Zealand."
    },
    {
-    "q": "When did Ms. Green come to Japan?",
+    "q": "When did Emily come to Japan?",
     "choices": [
      "Two years ago.",
      "Two days ago.",
@@ -108,7 +108,7 @@
     "why": "two weeks ago。two のあとの weeks に注意。"
    },
    {
-    "q": "What does Ms. Green do in her free time?",
+    "q": "What does Emily do in her free time?",
     "choices": [
      "She plays the piano.",
      "She cooks sushi.",
@@ -121,13 +121,13 @@
  },
  "C2": {
   "script": [
-   "Kei: Ms. Green seems nice.",
+   "Kei: Emily seems nice.",
    "Nana: Yes. I want to talk with her about music. I play the guitar.",
    "Kei: Really? I play the drums. Let's make a band.",
    "Nana: That's a great idea. We need a piano player.",
-   "Kei: Let's ask Ms. Green!"
+   "Kei: Let's ask Emily!"
   ],
-  "ja": "（ケイ）グリーン先生、いい人そうだね。／（ナナ）うん。音楽のことを話したいな。わたしはギターをひくの。／（ケイ）本当？ぼくはドラムをたたくよ。バンドを作ろう。／（ナナ）いい考えだね。ピアノをひく人がほしいな。／（ケイ）グリーン先生に聞いてみよう！",
+  "ja": "（ケイ）エミリー先生、いい人そうだね。／（ナナ）うん。音楽のことを話したいな。わたしはギターをひくの。／（ケイ）本当？ぼくはドラムをたたくよ。バンドを作ろう。／（ナナ）いい考えだね。ピアノをひく人がほしいな。／（ケイ）エミリー先生に聞いてみよう！",
   "qs": [
    {
     "q": "What does Nana play?",
@@ -153,11 +153,11 @@
     "q": "Who will they ask to join the band?",
     "choices": [
      "Nana's sister.",
-     "Ms. Green.",
-     "Their teacher, Mr. Kato."
+     "Emily.",
+     "Their math teacher."
     ],
     "ans": 1,
-    "why": "We need a piano player. Let's ask Ms. Green!"
+    "why": "We need a piano player. Let's ask Emily!"
    }
   ]
  }

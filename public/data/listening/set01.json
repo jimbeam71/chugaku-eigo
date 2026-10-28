@@ -107,7 +107,7 @@
     "why": "first Saturday のところで Ten people。40 は集めたごみぶくろの数、100 は今の参加者数。数字の引っかけに注意。"
    },
    {
-    "q": "What did Mr. Green and his friends put near the beach?",
+    "q": "What did Dan and his friends put near the beach?",
     "choices": [
      "A bench.",
      "A flower garden.",
@@ -117,7 +117,7 @@
     "why": "We made a poster and put it near the beach."
    },
    {
-    "q": "What did Mr. Green learn?",
+    "q": "What did Dan learn?",
     "choices": [
      "Newspapers are important to the town.",
      "Small actions can change a town.",
@@ -130,7 +130,7 @@
  },
  "C2": {
   "script": [
-   "Haruka: Mr. Green's story was great. I live near the sea, and sometimes I see trash on the beach.",
+   "Haruka: Dan's story was great. I live near the sea, and sometimes I see trash on the beach.",
    "Tom: Really? I want to do something, too. Do you have any ideas, Haruka?",
    "Haruka: Well, how about a clean-up day for our school? We can invite students from other classes.",
    "Tom: That sounds good. But how can we get many students to join?",
@@ -142,7 +142,7 @@
    "Tom: Hmm, that might be fun. Let's talk to our teacher tomorrow.",
    "Haruka: OK. I'll make a plan tonight, and show it to you after school."
   ],
-  "ja": "（はるか）グリーン先生の話、すてきだったね。わたしは海の近くに住んでいて、ときどき浜辺でごみを見るの。／（トム）本当？ぼくも何かしたい。何かアイデアある、はるか？／（はるか）うーん、学校のそうじの日はどう？ほかのクラスの生徒も誘えるよ。／（トム）いいね。でも、どうやって多くの生徒に参加してもらう？／（はるか）ポスターだけでは足りないと思う。先月、わたしの町の学校がSNSを使っているのを見たの。最初のそうじの写真を共有したら、次はもっと生徒が来たんだって。／（トム）いいね。写真をとって学校のホームページにのせよう。／（はるか）それに、小さな賞品もあげられる。たとえば、1時間働いた人みんなにシール。／（トム）シール？生徒が喜ぶかなあ。／（はるか）じゃあ、いちばんごみを集めたクラスに、先生から追加の点をあげてもらうのは？／（トム）おお、それはおもしろそう。明日、先生に話そう。／（はるか）わかった。今夜計画を作って、放課後に見せるね。",
+  "ja": "（はるか）ダン先生の話、すてきだったね。わたしは海の近くに住んでいて、ときどき浜辺でごみを見るの。／（トム）本当？ぼくも何かしたい。何かアイデアある、はるか？／（はるか）うーん、学校のそうじの日はどう？ほかのクラスの生徒も誘えるよ。／（トム）いいね。でも、どうやって多くの生徒に参加してもらう？／（はるか）ポスターだけでは足りないと思う。先月、わたしの町の学校がSNSを使っているのを見たの。最初のそうじの写真を共有したら、次はもっと生徒が来たんだって。／（トム）いいね。写真をとって学校のホームページにのせよう。／（はるか）それに、小さな賞品もあげられる。たとえば、1時間働いた人みんなにシール。／（トム）シール？生徒が喜ぶかなあ。／（はるか）じゃあ、いちばんごみを集めたクラスに、先生から追加の点をあげてもらうのは？／（トム）おお、それはおもしろそう。明日、先生に話そう。／（はるか）わかった。今夜計画を作って、放課後に見せるね。",
   "qs": [
    {
     "q": "Why does Haruka want to do something?",

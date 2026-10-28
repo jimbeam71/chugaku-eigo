@@ -83,12 +83,12 @@
  ],
  "C1": {
   "script": [
-   "Hello. I'm Mr. Brown. I'm a cook at this school. Every day, I make lunch for three hundred students. I start at six in the morning. I make soup, salad, and a main dish. Today's lunch is curry and rice. Many students like it. I'm happy when I see their smiles."
+   "Hello. I'm Mark. I'm a cook at this school. Every day, I make lunch for three hundred students. I start at six in the morning. I make soup, salad, and a main dish. Today's lunch is curry and rice. Many students like it. I'm happy when I see their smiles."
   ],
-  "ja": "こんにちは。ブラウンです。この学校の調理師です。毎日、300人の生徒のために昼ごはんを作ります。朝6時に始めます。スープ、サラダ、メインの料理を作ります。今日の昼ごはんはカレーライスです。多くの生徒が好きです。生徒の笑顔を見ると、うれしくなります。",
+  "ja": "こんにちは。マークです。この学校の調理師です。毎日、300人の生徒のために昼ごはんを作ります。朝6時に始めます。スープ、サラダ、メインの料理を作ります。今日の昼ごはんはカレーライスです。多くの生徒が好きです。生徒の笑顔を見ると、うれしくなります。",
   "qs": [
    {
-    "q": "What is Mr. Brown's job?",
+    "q": "What is Mark's job?",
     "choices": [
      "He is a teacher.",
      "He is a cook.",
@@ -98,7 +98,7 @@
     "why": "I'm a cook at this school."
    },
    {
-    "q": "What time does Mr. Brown start?",
+    "q": "What time does Mark start?",
     "choices": [
      "At six.",
      "At eight.",
@@ -124,10 +124,10 @@
    "Ken: Today's curry was great, Aya.",
    "Aya: Yes, it was! I had two bowls.",
    "Ken: Two? I had only one, but I want more.",
-   "Aya: Mr. Brown always makes extra. Let's go and ask him.",
+   "Aya: Mark always makes extra. Let's go and ask him.",
    "Ken: OK."
   ],
-  "ja": "（ケン）今日のカレー、おいしかったね、アヤ。／（アヤ）うん！2杯食べたよ。／（ケン）2杯？ぼくは1杯だけだったけど、もっと食べたいな。／（アヤ）ブラウンさんはいつも多めに作るよ。聞きに行こう。／（ケン）うん。",
+  "ja": "（ケン）今日のカレー、おいしかったね、アヤ。／（アヤ）うん！2杯食べたよ。／（ケン）2杯？ぼくは1杯だけだったけど、もっと食べたいな。／（アヤ）マークさんはいつも多めに作るよ。聞きに行こう。／（ケン）うん。",
   "qs": [
    {
     "q": "What did Aya eat?",
@@ -154,7 +154,7 @@
     "choices": [
      "Go home.",
      "Make curry.",
-     "Ask Mr. Brown for more."
+     "Ask Mark for more."
     ],
     "ans": 2,
     "why": "Let's go and ask him."

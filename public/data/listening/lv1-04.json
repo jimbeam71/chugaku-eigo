@@ -84,12 +84,12 @@
  ],
  "C1": {
   "script": [
-   "Hello, everyone. I'm Mr. Smith. Today I want to talk about my favorite season. It's winter. I love snow. In my hometown, it snows a lot in December. I make a big snowman with my brother. We use a carrot for its nose. After that, we drink hot chocolate at home. It's warm and sweet. What is your favorite season?"
+   "Hello, everyone. I'm Jack. Today I want to talk about my favorite season. It's winter. I love snow. In my hometown, it snows a lot in December. I make a big snowman with my brother. We use a carrot for its nose. After that, we drink hot chocolate at home. It's warm and sweet. What is your favorite season?"
   ],
-  "ja": "みなさん、こんにちは。スミスです。今日は、わたしの好きな季節について話します。冬です。雪が大好きです。故郷では、12月にたくさん雪がふります。弟といっしょに大きな雪だるまを作ります。鼻にはにんじんを使います。そのあと、家であたたかいココアを飲みます。あたたかくて甘いです。みなさんの好きな季節は何ですか？",
+  "ja": "みなさん、こんにちは。ジャックです。今日は、わたしの好きな季節について話します。冬です。雪が大好きです。故郷では、12月にたくさん雪がふります。弟といっしょに大きな雪だるまを作ります。鼻にはにんじんを使います。そのあと、家であたたかいココアを飲みます。あたたかくて甘いです。みなさんの好きな季節は何ですか？",
   "qs": [
    {
-    "q": "What is Mr. Smith's favorite season?",
+    "q": "What is Jack's favorite season?",
     "choices": [
      "Spring.",
      "Winter.",
@@ -99,7 +99,7 @@
     "why": "It's winter. I love snow."
    },
    {
-    "q": "What does Mr. Smith make with his brother?",
+    "q": "What does Jack make with his brother?",
     "choices": [
      "A cake.",
      "A snowman.",
@@ -122,13 +122,13 @@
  },
  "C2": {
   "script": [
-   "Yuki: Mr. Smith's story was fun. I like summer.",
+   "Yuki: Jack's story was fun. I like summer.",
    "Ben: Why do you like it?",
    "Yuki: Because I can swim in the sea.",
    "Ben: I like swimming, too. But I can't swim well.",
    "Yuki: I can teach you. Let's go next week."
   ],
-  "ja": "（ユキ）スミス先生の話、おもしろかったね。わたしは夏が好き。／（ベン）どうして好きなの？／（ユキ）海で泳げるから。／（ベン）ぼくも泳ぐのは好き。でも、じょうずに泳げないんだ。／（ユキ）教えてあげるよ。来週行こう。",
+  "ja": "（ユキ）ジャック先生の話、おもしろかったね。わたしは夏が好き。／（ベン）どうして好きなの？／（ユキ）海で泳げるから。／（ベン）ぼくも泳ぐのは好き。でも、じょうずに泳げないんだ。／（ユキ）教えてあげるよ。来週行こう。",
   "qs": [
    {
     "q": "Why does Yuki like summer?",

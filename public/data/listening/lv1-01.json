@@ -83,12 +83,12 @@
  ],
  "C1": {
   "script": [
-   "Hello, everyone. I'm Ms. Lee. I'm from Australia. I like animals. I have two cats and one dog. Every morning, I walk with my dog in the park. It takes thirty minutes. In my free time, I read books about animals. Do you like animals?"
+   "Hello, everyone. I'm Anna. I'm from Australia. I like animals. I have two cats and one dog. Every morning, I walk with my dog in the park. It takes thirty minutes. In my free time, I read books about animals. Do you like animals?"
   ],
-  "ja": "みなさん、こんにちは。リーです。オーストラリア出身です。動物が好きです。ねこが2ひきと犬が1ぴきいます。毎朝、公園で犬と散歩します。30分かかります。ひまなときは、動物の本を読みます。みなさんは動物が好きですか？",
+  "ja": "みなさん、こんにちは。アンナです。オーストラリア出身です。動物が好きです。ねこが2ひきと犬が1ぴきいます。毎朝、公園で犬と散歩します。30分かかります。ひまなときは、動物の本を読みます。みなさんは動物が好きですか？",
   "qs": [
    {
-    "q": "Where is Ms. Lee from?",
+    "q": "Where is Anna from?",
     "choices": [
      "Australia.",
      "America.",
@@ -98,7 +98,7 @@
     "why": "I'm from Australia. 出身は最初のほうに出る。"
    },
    {
-    "q": "How many cats does Ms. Lee have?",
+    "q": "How many cats does Anna have?",
     "choices": [
      "Two.",
      "One.",
@@ -108,7 +108,7 @@
     "why": "two cats and one dog。ねこは2、犬は1。数字と動物を結びつけて聞く。"
    },
    {
-    "q": "What does Ms. Lee do every morning?",
+    "q": "What does Anna do every morning?",
     "choices": [
      "She walks with her dog.",
      "She feeds her cats.",
@@ -121,13 +121,13 @@
  },
  "C2": {
   "script": [
-   "Ken: Ms. Lee's dog is cute. Do you have a pet, Mika?",
+   "Ken: Anna's dog is cute. Do you have a pet, Mika?",
    "Mika: Yes, I have a rabbit. I feed it every morning.",
    "Ken: Do you walk with it?",
    "Mika: No. It stays at home. But I play with it after school.",
    "Ken: That sounds nice."
   ],
-  "ja": "（ケン）リー先生の犬、かわいいね。ミカはペットを飼ってる？／（ミカ）うん、ウサギを飼ってる。毎朝えさをあげるよ。／（ケン）いっしょに散歩するの？／（ミカ）ううん。家にいるの。でも放課後に、いっしょに遊ぶよ。／（ケン）いいね。",
+  "ja": "（ケン）アンナ先生の犬、かわいいね。ミカはペットを飼ってる？／（ミカ）うん、ウサギを飼ってる。毎朝えさをあげるよ。／（ケン）いっしょに散歩するの？／（ミカ）ううん。家にいるの。でも放課後に、いっしょに遊ぶよ。／（ケン）いいね。",
   "qs": [
    {
     "q": "Does Mika have a pet?",
