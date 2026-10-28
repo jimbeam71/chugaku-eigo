@@ -1,15 +1,17 @@
 {
  "id": "set01",
  "title": "第5段階 入試レベル 1",
+ "level": 5,
+ "mode": "practice",
  "A": [
   {
    "q": "What will Tom say next?",
    "choices": [
-    "Thanks, I'll go and see.",
     "Yes, it's a big bag.",
+    "Thanks, I'll go and see.",
     "No, the festival is over."
    ],
-   "ans": 0,
+   "ans": 1,
    "ja": "（母）トム、明日の学園祭の準備はできた？／（トム）だいたいね。でも、学校のかばんが見つからないんだ。／（母）リビングで見たよ。そこは見た？",
    "why": "「そこは見た？」と聞かれているので、「ありがとう、見てくるよ」と答えるのが自然。",
    "script": [
@@ -65,18 +67,18 @@
   {
    "q": "What will the boy have for dinner?",
    "options": [
-    "🍛🥬",
-    "🍛🍞",
     "🍝🥬",
-    "🍛🍅"
+    "🍛🍅",
+    "🍛🍞",
+    "🍛🥬"
    ],
    "labels": [
-    "カレーライスとキャベツのサラダ",
-    "カレーとパン",
     "パスタとキャベツのサラダ",
-    "カレーとトマト"
+    "カレーとトマト",
+    "カレーとパン",
+    "カレーライスとキャベツのサラダ"
    ],
-   "ans": 0,
+   "ans": 3,
    "ja": "（男の子）お母さん、夕ごはんは何？／（母）カレーよ。ごはんとパン、どっちがいい？／（男の子）ごはんで。それとサラダも食べたい。／（母）いいけど、トマトがないの。キャベツでいい？／（男の子）うん、それでいいよ。",
    "why": "rice を選び、サラダはトマトの代わりにキャベツ。トマトはない、が落とし穴。",
    "script": [
@@ -97,29 +99,29 @@
    {
     "q": "How many people came to the first clean-up?",
     "choices": [
-     "Ten people.",
+     "One hundred people.",
      "Forty people.",
-     "One hundred people."
+     "Ten people."
     ],
-    "ans": 0,
+    "ans": 2,
     "why": "first Saturday のところで Ten people。40 は集めたごみぶくろの数、100 は今の参加者数。数字の引っかけに注意。"
    },
    {
     "q": "What did Mr. Green and his friends put near the beach?",
     "choices": [
-     "A poster.",
      "A bench.",
-     "A flower garden."
+     "A flower garden.",
+     "A poster."
     ],
-    "ans": 0,
+    "ans": 2,
     "why": "We made a poster and put it near the beach."
    },
    {
     "q": "What did Mr. Green learn?",
     "choices": [
-     "Beaches are always clean in spring.",
+     "Newspapers are important to the town.",
      "Small actions can change a town.",
-     "Newspapers are important to the town."
+     "Beaches are always clean in spring."
     ],
     "ans": 1,
     "why": "最後のまとめ I learned that... を聞き取る。まとめは終わり近くに出る。"
@@ -145,19 +147,19 @@
    {
     "q": "Why does Haruka want to do something?",
     "choices": [
-     "She sometimes sees trash on the beach near her house.",
+     "She wants to win a prize.",
      "Her teacher asked her to do it.",
-     "She wants to win a prize."
+     "She sometimes sees trash on the beach near her house."
     ],
-    "ans": 0,
+    "ans": 2,
     "why": "最初の発言。I see trash on the beach。"
    },
    {
     "q": "How did a school in Haruka's town get more students to join?",
     "choices": [
-     "By giving every student a sticker.",
+     "By asking a newspaper to write about it.",
      "By sharing photos from their first clean-up.",
-     "By asking a newspaper to write about it."
+     "By giving every student a sticker."
     ],
     "ans": 1,
     "why": "シールとポイントは、はるかの『案』であって、実際にその学校がやったことは写真の共有。"
@@ -165,15 +167,13 @@
    {
     "q": "What will Haruka do tonight?",
     "choices": [
-     "Talk to the teacher.",
+     "Make a plan.",
      "Take photos on the beach.",
-     "Make a plan."
+     "Talk to the teacher."
     ],
-    "ans": 2,
+    "ans": 0,
     "why": "Let's talk to our teacher tomorrow は『明日』。今夜は I'll make a plan tonight。"
    }
   ]
- },
- "mode": "practice",
- "level": 5
+ }
 }
