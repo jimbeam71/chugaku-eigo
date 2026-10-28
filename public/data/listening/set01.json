@@ -41,7 +41,7 @@
  ],
  "B": [
   {
-   "q": "What does Ken do on Wednesdays?",
+   "q": "What does Sam do on Wednesdays?",
    "options": [
     "⚾",
     "📚",
@@ -55,10 +55,10 @@
     "サッカー"
    ],
    "ans": 1,
-   "ja": "（女）ケン、水曜日は放課後何をしているの？／（ケン）月曜日は友だちと野球をするよ。水曜日は図書館でエミと勉強する。／（女）金曜日は？／（ケン）父のレストランを手伝う。",
+   "ja": "（女）サム、水曜日は放課後何をしているの？／（サム）月曜日は友だちと野球をするよ。水曜日は図書館でエミと勉強する。／（女）金曜日は？／（サム）父のレストランを手伝う。",
    "why": "月曜＝野球、水曜＝図書館、金曜＝レストラン。曜日と内容を結びつけて聞く。",
    "script": [
-    "Woman: Ken, what do you do after school on Wednesdays?",
+    "Woman: Sam, what do you do after school on Wednesdays?",
     "Man: I usually play baseball with my friends on Mondays. On Wednesdays, I go to the library to study with Emi.",
     "Woman: How about Fridays?",
     "Man: I help my father at his restaurant."

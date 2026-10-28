@@ -37,7 +37,7 @@
  ],
  "B": [
   {
-   "q": "What does Ken want?",
+   "q": "What does Sam want?",
    "options": [
     "👟",
     "⚽",
@@ -51,10 +51,10 @@
     "スマホ"
    ],
    "ans": 2,
-   "ja": "（女）ケン、誕生日に何がほしい？／（ケン）新しい自転車がほしい。",
+   "ja": "（女）サム、誕生日に何がほしい？／（サム）新しい自転車がほしい。",
    "why": "bike = 自転車。",
    "script": [
-    "Woman: What do you want for your birthday, Ken?",
+    "Woman: What do you want for your birthday, Sam?",
     "Man: I want a new bike."
    ]
   },
@@ -121,13 +121,13 @@
  },
  "C2": {
   "script": [
-   "Ken: Anna's dog is cute. Do you have a pet, Mika?",
+   "Sam: Anna's dog is cute. Do you have a pet, Mika?",
    "Mika: Yes, I have a rabbit. I feed it every morning.",
-   "Ken: Do you walk with it?",
+   "Sam: Do you walk with it?",
    "Mika: No. It stays at home. But I play with it after school.",
-   "Ken: That sounds nice."
+   "Sam: That sounds nice."
   ],
-  "ja": "（ケン）アンナ先生の犬、かわいいね。ミカはペットを飼ってる？／（ミカ）うん、ウサギを飼ってる。毎朝えさをあげるよ。／（ケン）いっしょに散歩するの？／（ミカ）ううん。家にいるの。でも放課後に、いっしょに遊ぶよ。／（ケン）いいね。",
+  "ja": "（サム）アンナ先生の犬、かわいいね。ミカはペットを飼ってる？／（ミカ）うん、ウサギを飼ってる。毎朝えさをあげるよ。／（サム）いっしょに散歩するの？／（ミカ）ううん。家にいるの。でも放課後に、いっしょに遊ぶよ。／（サム）いいね。",
   "qs": [
    {
     "q": "Does Mika have a pet?",

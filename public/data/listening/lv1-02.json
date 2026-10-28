@@ -12,10 +12,10 @@
     "See you tomorrow."
    ],
    "ans": 0,
-   "ja": "（女）ケン、ごはんをもっと食べる？／（ケン）ううん、ありがとう。おなかいっぱい。",
+   "ja": "（女）サム、ごはんをもっと食べる？／（サム）ううん、ありがとう。おなかいっぱい。",
    "why": "「おなかいっぱい」と言われたので、「じゃあ果物は？」と話をつなぐのが自然。",
    "script": [
-    "Woman: Ken, do you want some more rice?",
+    "Woman: Sam, do you want some more rice?",
     "Man: No, thank you. I'm full."
    ]
   },
@@ -121,13 +121,13 @@
  },
  "C2": {
   "script": [
-   "Ken: Today's curry was great, Aya.",
+   "Sam: Today's curry was great, Aya.",
    "Aya: Yes, it was! I had two bowls.",
-   "Ken: Two? I had only one, but I want more.",
+   "Sam: Two? I had only one, but I want more.",
    "Aya: Mark always makes extra. Let's go and ask him.",
-   "Ken: OK."
+   "Sam: OK."
   ],
-  "ja": "（ケン）今日のカレー、おいしかったね、アヤ。／（アヤ）うん！2杯食べたよ。／（ケン）2杯？ぼくは1杯だけだったけど、もっと食べたいな。／（アヤ）マークさんはいつも多めに作るよ。聞きに行こう。／（ケン）うん。",
+  "ja": "（サム）今日のカレー、おいしかったね、アヤ。／（アヤ）うん！2杯食べたよ。／（サム）2杯？ぼくは1杯だけだったけど、もっと食べたいな。／（アヤ）マークさんはいつも多めに作るよ。聞きに行こう。／（サム）うん。",
   "qs": [
    {
     "q": "What did Aya eat?",
@@ -140,7 +140,7 @@
     "why": "I had two bowls."
    },
    {
-    "q": "How many bowls did Ken have?",
+    "q": "How many bowls did Sam have?",
     "choices": [
      "Two.",
      "One.",
