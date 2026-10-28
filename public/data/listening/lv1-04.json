@@ -1,0 +1,165 @@
+{
+ "id": "lv1-04",
+ "title": "第1段階 はじめの一歩 4",
+ "level": 1,
+ "mode": "practice",
+ "A": [
+  {
+   "q": "What will the woman say next?",
+   "choices": [
+    "It was hot yesterday.",
+    "I'm going to school.",
+    "You can use my scarf."
+   ],
+   "ans": 2,
+   "ja": "（女）今日は寒いね、ベン。／（ベン）うん。コートを忘れたんだ。",
+   "why": "コートを忘れた人には、「わたしのマフラーを使って」が自然。",
+   "script": [
+    "Woman: It's cold today, Ben.",
+    "Man: Yes. I forgot my coat."
+   ]
+  },
+  {
+   "q": "Which day will they go to the sea?",
+   "choices": [
+    "Sunday.",
+    "Monday.",
+    "Saturday."
+   ],
+   "ans": 2,
+   "ja": "（男）今度の日曜日に海へ行こう。／（女）天気予報だと日曜日は雨だって。土曜日はどう？／（男）いいね。その日に行こう。",
+   "why": "最初に出た日曜日はやめになった。最後の that day = 土曜日。",
+   "script": [
+    "Man: Let's go to the sea this Sunday.",
+    "Woman: The weather report says it will rain on Sunday. How about Saturday?",
+    "Man: Good idea. Let's go on that day."
+   ]
+  }
+ ],
+ "B": [
+  {
+   "q": "What will the boy wear?",
+   "options": [
+    "🧥🩳",
+    "🧥👖",
+    "👔🩳",
+    "👕👖"
+   ],
+   "labels": [
+    "上着と半ズボン",
+    "上着とジーンズ",
+    "シャツと半ズボン",
+    "Tシャツとジーンズ"
+   ],
+   "ans": 1,
+   "ja": "（女）パーティーに何を着ていくの？／（男）新しい上着とジーンズを着るよ。",
+   "why": "jacket = 上着、jeans = ジーンズ。2つとも聞き取る。",
+   "script": [
+    "Woman: What are you going to wear to the party?",
+    "Man: I'll wear my new jacket and jeans."
+   ]
+  },
+  {
+   "q": "How will the weather be in Osaka in the evening?",
+   "options": [
+    "❄️",
+    "☁️",
+    "🌧️",
+    "☀️"
+   ],
+   "labels": [
+    "雪",
+    "くもり",
+    "雨",
+    "晴れ"
+   ],
+   "ans": 2,
+   "ja": "（男）大阪の天気はどう？／（女）今はくもりだけど、夕方には雨になるよ。",
+   "why": "now（今）と in the evening（夕方）を聞き分ける。",
+   "script": [
+    "Man: What's the weather like in Osaka?",
+    "Woman: It's cloudy now, but it will be rainy in the evening."
+   ]
+  }
+ ],
+ "C1": {
+  "script": [
+   "Hello, everyone. I'm Mr. Smith. Today I want to talk about my favorite season. It's winter. I love snow. In my hometown, it snows a lot in December. I make a big snowman with my brother. We use a carrot for its nose. After that, we drink hot chocolate at home. It's warm and sweet. What is your favorite season?"
+  ],
+  "ja": "みなさん、こんにちは。スミスです。今日は、わたしの好きな季節について話します。冬です。雪が大好きです。故郷では、12月にたくさん雪がふります。弟といっしょに大きな雪だるまを作ります。鼻にはにんじんを使います。そのあと、家であたたかいココアを飲みます。あたたかくて甘いです。みなさんの好きな季節は何ですか？",
+  "qs": [
+   {
+    "q": "What is Mr. Smith's favorite season?",
+    "choices": [
+     "Spring.",
+     "Winter.",
+     "Summer."
+    ],
+    "ans": 1,
+    "why": "It's winter. I love snow."
+   },
+   {
+    "q": "What does Mr. Smith make with his brother?",
+    "choices": [
+     "A cake.",
+     "A snowman.",
+     "A kite."
+    ],
+    "ans": 1,
+    "why": "I make a big snowman with my brother."
+   },
+   {
+    "q": "What do they use for its nose?",
+    "choices": [
+     "A carrot.",
+     "A pencil.",
+     "A stone."
+    ],
+    "ans": 0,
+    "why": "We use a carrot for its nose. its = 雪だるまの。"
+   }
+  ]
+ },
+ "C2": {
+  "script": [
+   "Yuki: Mr. Smith's story was fun. I like summer.",
+   "Ben: Why do you like it?",
+   "Yuki: Because I can swim in the sea.",
+   "Ben: I like swimming, too. But I can't swim well.",
+   "Yuki: I can teach you. Let's go next week."
+  ],
+  "ja": "（ユキ）スミス先生の話、おもしろかったね。わたしは夏が好き。／（ベン）どうして好きなの？／（ユキ）海で泳げるから。／（ベン）ぼくも泳ぐのは好き。でも、じょうずに泳げないんだ。／（ユキ）教えてあげるよ。来週行こう。",
+  "qs": [
+   {
+    "q": "Why does Yuki like summer?",
+    "choices": [
+     "She has a long holiday.",
+     "She can swim in the sea.",
+     "She likes snow."
+    ],
+    "ans": 1,
+    "why": "Because I can swim in the sea."
+   },
+   {
+    "q": "Can Ben swim well?",
+    "choices": [
+     "He can swim fast.",
+     "No, he can't.",
+     "Yes, he can."
+    ],
+    "ans": 1,
+    "why": "I can't swim well。can't のところを聞き取る。"
+   },
+   {
+    "q": "What will Yuki do next week?",
+    "choices": [
+     "Teach Ben to swim.",
+     "Go to school.",
+     "Buy a swimsuit."
+    ],
+    "ans": 0,
+    "why": "I can teach you. Let's go next week."
+   }
+  ]
+ }
+}

@@ -1,0 +1,164 @@
+{
+ "id": "lv1-03",
+ "title": "第1段階 はじめの一歩 3",
+ "level": 1,
+ "mode": "practice",
+ "A": [
+  {
+   "q": "What will the man say next?",
+   "choices": [
+    "Thank you very much.",
+    "Yes, I am.",
+    "It's five o'clock."
+   ],
+   "ans": 0,
+   "ja": "（男）すみません、駅はどこですか。／（女）まっすぐ行って、左に曲がってください。",
+   "why": "道を教えてもらったので、お礼が自然。",
+   "script": [
+    "Man: Excuse me. Where is the station?",
+    "Woman: Go straight and turn left."
+   ]
+  },
+  {
+   "q": "What time must the girl come home?",
+   "choices": [
+    "Five o'clock.",
+    "Four o'clock.",
+    "Six o'clock."
+   ],
+   "ans": 0,
+   "ja": "（女の子）お父さん、エミと公園に行っていい？／（父）いいよ。でも5時までに帰っておいで。",
+   "why": "by five = 5時までに。",
+   "script": [
+    "Woman: Dad, can I go to the park with Emi?",
+    "Man: OK. But come home by five."
+   ]
+  }
+ ],
+ "B": [
+  {
+   "q": "Where is the library?",
+   "options": [
+    "📚🏥",
+    "📚🏤",
+    "📚🍞",
+    "📚🏫"
+   ],
+   "labels": [
+    "病院のとなり",
+    "郵便局のとなり",
+    "パン屋のとなり",
+    "学校のとなり"
+   ],
+   "ans": 1,
+   "ja": "（男）図書館はどこですか。／（女）2ブロックまっすぐ行ってください。郵便局のとなりです。",
+   "why": "next to = となり。場所の言葉を聞き取る。",
+   "script": [
+    "Man: Where is the library?",
+    "Woman: Go straight for two blocks. It's next to the post office."
+   ]
+  },
+  {
+   "q": "How does Tom come to school?",
+   "options": [
+    "🚶",
+    "🚲",
+    "🚌",
+    "🚗"
+   ],
+   "labels": [
+    "歩き",
+    "自転車",
+    "バス",
+    "車"
+   ],
+   "ans": 0,
+   "ja": "（女）トム、どうやって学校に来るの？／（トム）歩いてだよ。家が学校の近くなんだ。",
+   "why": "walk = 歩く。",
+   "script": [
+    "Woman: How do you come to school, Tom?",
+    "Man: I walk. My house is near the school."
+   ]
+  }
+ ],
+ "C1": {
+  "script": [
+   "Hello. I'm Emi. This is my town. It's small, but it's nice. There is a big park near my house. There is also a library next to the park. I go to the library every Saturday. I read books there for two hours. After that, I eat lunch in the park. I love my town."
+  ],
+  "ja": "こんにちは。エミです。ここはわたしの町です。小さいけれど、すてきです。家の近くに大きな公園があります。公園のとなりには図書館もあります。毎週土曜日に図書館へ行きます。そこで2時間、本を読みます。そのあと、公園で昼ごはんを食べます。わたしは自分の町が大好きです。",
+  "qs": [
+   {
+    "q": "What is near Emi's house?",
+    "choices": [
+     "A hospital.",
+     "A zoo.",
+     "A big park."
+    ],
+    "ans": 2,
+    "why": "There is a big park near my house."
+   },
+   {
+    "q": "When does Emi go to the library?",
+    "choices": [
+     "Every day.",
+     "Every Saturday.",
+     "Every Sunday."
+    ],
+    "ans": 1,
+    "why": "every Saturday。曜日を聞き取る。"
+   },
+   {
+    "q": "Where does Emi eat lunch?",
+    "choices": [
+     "In the park.",
+     "In the library.",
+     "At home."
+    ],
+    "ans": 0,
+    "why": "After that, I eat lunch in the park. After that = そのあと。"
+   }
+  ]
+ },
+ "C2": {
+  "script": [
+   "Emi: Tom, what do you do on Sundays?",
+   "Tom: I usually play soccer in the park.",
+   "Emi: Oh, I go there on Saturdays. Do you want to play together?",
+   "Tom: Sure. How about next Saturday?",
+   "Emi: Great. I'll bring a ball."
+  ],
+  "ja": "（エミ）トム、日曜日は何をしているの？／（トム）たいてい公園でサッカーをするよ。／（エミ）あ、わたしは土曜日にそこへ行くの。いっしょにやらない？／（トム）いいよ。次の土曜日はどう？／（エミ）いいね。ボールを持っていくよ。",
+  "qs": [
+   {
+    "q": "Where does Tom play soccer?",
+    "choices": [
+     "At school.",
+     "At home.",
+     "In the park."
+    ],
+    "ans": 2,
+    "why": "in the park."
+   },
+   {
+    "q": "When will they play together?",
+    "choices": [
+     "Tomorrow.",
+     "Next Sunday.",
+     "Next Saturday."
+    ],
+    "ans": 2,
+    "why": "How about next Saturday? Sure. 日曜日はトムがいつもサッカーをする日で、約束の日ではない。"
+   },
+   {
+    "q": "What will Emi bring?",
+    "choices": [
+     "A ball.",
+     "Lunch.",
+     "A book."
+    ],
+    "ans": 0,
+    "why": "I'll bring a ball."
+   }
+  ]
+ }
+}

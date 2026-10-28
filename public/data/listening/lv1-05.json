@@ -1,0 +1,164 @@
+{
+ "id": "lv1-05",
+ "title": "第1段階 はじめの一歩 5",
+ "level": 1,
+ "mode": "practice",
+ "A": [
+  {
+   "q": "What will the man say next?",
+   "choices": [
+    "I'm sorry.",
+    "You're welcome.",
+    "Good luck."
+   ],
+   "ans": 2,
+   "ja": "（男）ゆい、部活に入るの？／（ゆい）うん。テニス部に入りたい。",
+   "why": "がんばってね、の Good luck. が自然。",
+   "script": [
+    "Man: Are you going to join a club, Yui?",
+    "Woman: Yes. I want to join the tennis club."
+   ]
+  },
+  {
+   "q": "What will the students do at the festival?",
+   "choices": [
+    "Eat lunch.",
+    "Play tennis.",
+    "Sing songs."
+   ],
+   "ans": 2,
+   "ja": "（女）加藤先生、学園祭はいつですか。／（加藤先生）10月10日だよ。ステージで歌をうたうよ。",
+   "why": "We will sing songs on the stage.",
+   "script": [
+    "Woman: Mr. Kato, when is the school festival?",
+    "Man: It's on October tenth. We will sing songs on the stage."
+   ]
+  }
+ ],
+ "B": [
+  {
+   "q": "What does Mina do on Tuesdays?",
+   "options": [
+    "⚽",
+    "📚",
+    "🎨",
+    "🎵"
+   ],
+   "labels": [
+    "サッカー",
+    "読書",
+    "絵をかく",
+    "音楽"
+   ],
+   "ans": 2,
+   "ja": "（男）ミナは何部に入っているの？／（ミナ）美術部だよ。毎週火曜日に絵をかくの。",
+   "why": "art club と draw pictures から答えがわかる。",
+   "script": [
+    "Man: What club are you in, Mina?",
+    "Woman: I'm in the art club. I draw pictures every Tuesday."
+   ]
+  },
+  {
+   "q": "Which test was hard for Jun?",
+   "options": [
+    "➗",
+    "🌏",
+    "🧪",
+    "🔤"
+   ],
+   "labels": [
+    "数学",
+    "社会",
+    "理科",
+    "英語"
+   ],
+   "ans": 3,
+   "ja": "（女）ジュン、テストはどうだった？／（ジュン）数学は簡単だったけど、英語は難しかった。",
+   "why": "but の前後が逆になる。hard = 難しい、easy = 簡単。",
+   "script": [
+    "Woman: How was your test, Jun?",
+    "Man: The math test was easy, but the English test was hard."
+   ]
+  }
+ ],
+ "C1": {
+  "script": [
+   "Hello, everyone. I'm Ms. Green, your new English teacher. I'm from New Zealand. I came to Japan two weeks ago. I like Japanese food, especially sushi. I also like to play the piano. In my free time, I play it at home. If you like music, please talk to me. Let's enjoy English together."
+  ],
+  "ja": "みなさん、こんにちは。新しい英語の先生のグリーンです。ニュージーランド出身です。2週間前に日本に来ました。日本食、とくにすしが好きです。ピアノをひくことも好きです。ひまなときは、家でひきます。音楽が好きなら、話しかけてください。いっしょに英語を楽しみましょう。",
+  "qs": [
+   {
+    "q": "Where is Ms. Green from?",
+    "choices": [
+     "America.",
+     "New Zealand.",
+     "Australia."
+    ],
+    "ans": 1,
+    "why": "I'm from New Zealand."
+   },
+   {
+    "q": "When did Ms. Green come to Japan?",
+    "choices": [
+     "Two years ago.",
+     "Two days ago.",
+     "Two weeks ago."
+    ],
+    "ans": 2,
+    "why": "two weeks ago。two のあとの weeks に注意。"
+   },
+   {
+    "q": "What does Ms. Green do in her free time?",
+    "choices": [
+     "She plays the piano.",
+     "She cooks sushi.",
+     "She reads books."
+    ],
+    "ans": 0,
+    "why": "In my free time, I play it at home. it = ピアノ。"
+   }
+  ]
+ },
+ "C2": {
+  "script": [
+   "Kei: Ms. Green seems nice.",
+   "Nana: Yes. I want to talk with her about music. I play the guitar.",
+   "Kei: Really? I play the drums. Let's make a band.",
+   "Nana: That's a great idea. We need a piano player.",
+   "Kei: Let's ask Ms. Green!"
+  ],
+  "ja": "（ケイ）グリーン先生、いい人そうだね。／（ナナ）うん。音楽のことを話したいな。わたしはギターをひくの。／（ケイ）本当？ぼくはドラムをたたくよ。バンドを作ろう。／（ナナ）いい考えだね。ピアノをひく人がほしいな。／（ケイ）グリーン先生に聞いてみよう！",
+  "qs": [
+   {
+    "q": "What does Nana play?",
+    "choices": [
+     "The guitar.",
+     "The piano.",
+     "The drums."
+    ],
+    "ans": 0,
+    "why": "I play the guitar."
+   },
+   {
+    "q": "What does Kei play?",
+    "choices": [
+     "The piano.",
+     "The guitar.",
+     "The drums."
+    ],
+    "ans": 2,
+    "why": "I play the drums."
+   },
+   {
+    "q": "Who will they ask to join the band?",
+    "choices": [
+     "Nana's sister.",
+     "Ms. Green.",
+     "Their teacher, Mr. Kato."
+    ],
+    "ans": 1,
+    "why": "We need a piano player. Let's ask Ms. Green!"
+   }
+  ]
+ }
+}

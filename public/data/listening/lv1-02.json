@@ -1,0 +1,164 @@
+{
+ "id": "lv1-02",
+ "title": "第1段階 はじめの一歩 2",
+ "level": 1,
+ "mode": "practice",
+ "A": [
+  {
+   "q": "What will the woman say next?",
+   "choices": [
+    "OK. How about some fruit?",
+    "I'm hungry, too.",
+    "See you tomorrow."
+   ],
+   "ans": 0,
+   "ja": "（女）ケン、ごはんをもっと食べる？／（ケン）ううん、ありがとう。おなかいっぱい。",
+   "why": "「おなかいっぱい」と言われたので、「じゃあ果物は？」と話をつなぐのが自然。",
+   "script": [
+    "Woman: Ken, do you want some more rice?",
+    "Man: No, thank you. I'm full."
+   ]
+  },
+  {
+   "q": "What does Mika drink for breakfast?",
+   "choices": [
+    "Milk.",
+    "Tea.",
+    "Juice."
+   ],
+   "ans": 0,
+   "ja": "（男）ミカ、朝ごはんに何を食べる？／（ミカ）パンと卵を食べるよ。牛乳も飲む。",
+   "why": "drink のあとの言葉を聞く。bread and eggs は食べる物。",
+   "script": [
+    "Man: Mika, what do you eat for breakfast?",
+    "Woman: I eat bread and eggs. I drink milk, too."
+   ]
+  }
+ ],
+ "B": [
+  {
+   "q": "What will the man have?",
+   "options": [
+    "🍜☕",
+    "🍕☕",
+    "🍔☕",
+    "🍔🥤"
+   ],
+   "labels": [
+    "ラーメンとコーヒー",
+    "ピザとコーヒー",
+    "ハンバーガーとコーヒー",
+    "ハンバーガーとジュース"
+   ],
+   "ans": 2,
+   "ja": "（女）何になさいますか？／（男）ハンバーガーと小さいコーヒーをください。",
+   "why": "I'd like = ほしい。2つとも聞き取る。",
+   "script": [
+    "Woman: What would you like, sir?",
+    "Man: I'd like a hamburger and a small coffee."
+   ]
+  },
+  {
+   "q": "What fruit doesn't the girl like?",
+   "options": [
+    "🍇",
+    "🍌",
+    "🍊",
+    "🍎"
+   ],
+   "labels": [
+    "ぶどう",
+    "バナナ",
+    "オレンジ",
+    "りんご"
+   ],
+   "ans": 1,
+   "ja": "（男）果物は好き？／（女）うん。りんごは好きだけど、バナナは好きじゃない。オレンジも好き。",
+   "why": "don't like を聞き取る問題。like と don't like に注意。",
+   "script": [
+    "Man: Do you like fruit?",
+    "Woman: Yes. I like apples, but I don't like bananas. I like oranges, too."
+   ]
+  }
+ ],
+ "C1": {
+  "script": [
+   "Hello. I'm Mr. Brown. I'm a cook at this school. Every day, I make lunch for three hundred students. I start at six in the morning. I make soup, salad, and a main dish. Today's lunch is curry and rice. Many students like it. I'm happy when I see their smiles."
+  ],
+  "ja": "こんにちは。ブラウンです。この学校の調理師です。毎日、300人の生徒のために昼ごはんを作ります。朝6時に始めます。スープ、サラダ、メインの料理を作ります。今日の昼ごはんはカレーライスです。多くの生徒が好きです。生徒の笑顔を見ると、うれしくなります。",
+  "qs": [
+   {
+    "q": "What is Mr. Brown's job?",
+    "choices": [
+     "He is a teacher.",
+     "He is a cook.",
+     "He is a doctor."
+    ],
+    "ans": 1,
+    "why": "I'm a cook at this school."
+   },
+   {
+    "q": "What time does Mr. Brown start?",
+    "choices": [
+     "At six.",
+     "At eight.",
+     "At seven."
+    ],
+    "ans": 0,
+    "why": "I start at six in the morning."
+   },
+   {
+    "q": "What is today's lunch?",
+    "choices": [
+     "Spaghetti.",
+     "Sandwiches.",
+     "Curry and rice."
+    ],
+    "ans": 2,
+    "why": "Today's lunch is curry and rice."
+   }
+  ]
+ },
+ "C2": {
+  "script": [
+   "Ken: Today's curry was great, Aya.",
+   "Aya: Yes, it was! I had two bowls.",
+   "Ken: Two? I had only one, but I want more.",
+   "Aya: Mr. Brown always makes extra. Let's go and ask him.",
+   "Ken: OK."
+  ],
+  "ja": "（ケン）今日のカレー、おいしかったね、アヤ。／（アヤ）うん！2杯食べたよ。／（ケン）2杯？ぼくは1杯だけだったけど、もっと食べたいな。／（アヤ）ブラウンさんはいつも多めに作るよ。聞きに行こう。／（ケン）うん。",
+  "qs": [
+   {
+    "q": "What did Aya eat?",
+    "choices": [
+     "Bread.",
+     "Two bowls of curry.",
+     "A salad."
+    ],
+    "ans": 1,
+    "why": "I had two bowls."
+   },
+   {
+    "q": "How many bowls did Ken have?",
+    "choices": [
+     "Two.",
+     "One.",
+     "Three."
+    ],
+    "ans": 1,
+    "why": "I had only one."
+   },
+   {
+    "q": "What will they do next?",
+    "choices": [
+     "Go home.",
+     "Make curry.",
+     "Ask Mr. Brown for more."
+    ],
+    "ans": 2,
+    "why": "Let's go and ask him."
+   }
+  ]
+ }
+}

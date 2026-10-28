@@ -7,11 +7,11 @@
   {
    "q": "What will the boy say next?",
    "choices": [
-    "Thank you.",
     "You're welcome.",
+    "Thank you.",
     "See you."
    ],
-   "ans": 0,
+   "ans": 1,
    "ja": "（男の子）お母さん、おなかがすいた。／（母）パンを食べなさい。",
    "why": "パンをすすめられたので、お礼の Thank you. が自然。You're welcome. は「お礼を言われた側」が言う。",
    "script": [
@@ -22,11 +22,11 @@
   {
    "q": "What does Tom have at home?",
    "choices": [
+    "A bird.",
     "A dog.",
-    "A cat.",
-    "A bird."
+    "A cat."
    ],
-   "ans": 0,
+   "ans": 1,
    "ja": "（女）トム、犬は好き？／（トム）うん。家に犬がいるよ。名前はマックス。",
    "why": "I have a dog at home. をそのまま聞き取る。",
    "script": [
@@ -39,18 +39,18 @@
   {
    "q": "What does Ken want?",
    "options": [
-    "🚲",
-    "📱",
+    "👟",
     "⚽",
-    "👟"
+    "🚲",
+    "📱"
    ],
    "labels": [
-    "自転車",
-    "スマホ",
+    "くつ",
     "サッカーボール",
-    "くつ"
+    "自転車",
+    "スマホ"
    ],
-   "ans": 0,
+   "ans": 2,
    "ja": "（女）ケン、誕生日に何がほしい？／（ケン）新しい自転車がほしい。",
    "why": "bike = 自転車。",
    "script": [
@@ -61,18 +61,18 @@
   {
    "q": "How was the weather in the afternoon?",
    "options": [
-    "☀️",
-    "🌧️",
     "☁️",
-    "❄️"
+    "🌧️",
+    "❄️",
+    "☀️"
    ],
    "labels": [
-    "晴れ",
-    "雨",
     "くもり",
-    "雪"
+    "雨",
+    "雪",
+    "晴れ"
    ],
-   "ans": 0,
+   "ans": 3,
    "ja": "（男）今日の天気はどうだった？／（女）朝は雨だったけど、午後は晴れたよ。",
    "why": "but のあとが午後。but の前後で内容が変わる。",
    "script": [
@@ -100,11 +100,11 @@
    {
     "q": "How many cats does Ms. Lee have?",
     "choices": [
-     "One.",
      "Two.",
+     "One.",
      "Three."
     ],
-    "ans": 1,
+    "ans": 0,
     "why": "two cats and one dog。ねこは2、犬は1。数字と動物を結びつけて聞く。"
    },
    {
@@ -132,31 +132,31 @@
    {
     "q": "Does Mika have a pet?",
     "choices": [
-     "Yes, she has a rabbit.",
+     "No, she doesn't.",
      "Yes, she has a dog.",
-     "No, she doesn't."
+     "Yes, she has a rabbit."
     ],
-    "ans": 0,
+    "ans": 2,
     "why": "I have a rabbit."
    },
    {
     "q": "When does Mika feed her pet?",
     "choices": [
-     "Every morning.",
+     "At night.",
      "After school.",
-     "At night."
+     "Every morning."
     ],
-    "ans": 0,
+    "ans": 2,
     "why": "feed it every morning。after school は『遊ぶ』時間。"
    },
    {
     "q": "What does Mika do after school?",
     "choices": [
-     "She walks with the rabbit.",
      "She plays with the rabbit.",
-     "She feeds the rabbit."
+     "She feeds the rabbit.",
+     "She walks with the rabbit."
     ],
-    "ans": 1,
+    "ans": 0,
     "why": "No (散歩はしない) → But I play with it after school."
    }
   ]
