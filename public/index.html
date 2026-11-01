@@ -301,7 +301,7 @@ Object.keys(MIXMAP).forEach(function(k){mixBuild(+k);});
 
 function data(){return DS[ch];}
 function secs(){return SECS[ch];}
-function mark(){ if(prog[ch].indexOf(i)<0){ var b0=partStat().G; prog[ch].push(i); if(partStat().G>b0){ partFlash=true; if(!(isDone(ch)&&false)) setTimeout(function(){ celebrate(partStat().G>=partStat().T?'part':'part'); },0); } if(!MIXMAP[ch]) save();} }
+function mark(){ window.hhStudied&&window.hhStudied(); if(prog[ch].indexOf(i)<0){ var b0=partStat().G; prog[ch].push(i); if(partStat().G>b0){ partFlash=true; if(!(isDone(ch)&&false)) setTimeout(function(){ celebrate(partStat().G>=partStat().T?'part':'part'); },0); } if(!MIXMAP[ch]) save();} }
 function playAu(n){
   if(!n) return;
   try{ if(window._au){window._au.pause();} window._au=new Audio((typeof AUDIO_EMBED!=='undefined'&&AUDIO_EMBED[n])||('audio/a'+n+'.mp3')); var pr=window._au.play(); if(pr&&pr.catch) pr.catch(function(){}); }catch(err){}
@@ -1520,6 +1520,7 @@ function finish44(){
   $app.innerHTML=h;
 }
 function finish(){
+  window.hhStudied&&window.hhStudied();
   cleared[ch]=1; if(!cleared['s'+ch]){ cleared['s'+ch]=1; newSt=ch; setTimeout(function(){ celebrate('stamp'); },0); }
   saveC();
   if(TESTS[ch]) return finish44();
@@ -1741,6 +1742,60 @@ document.addEventListener('click',function(e){
 });
 (function(){var n0=nextTodo(); if(n0>=0) ch=n0;})();
 render();
+})();
+</script>
+<!-- 連続日数（毎日の学習記録）。端末内（localStorage）だけに保存 -->
+<script>
+(function () {
+  try {
+    var SKEY = 'hh-streak-v1', CLICK = false;
+    function ymd(d) { return d.getFullYear() + '-' + (d.getMonth() + 1) + '-' + d.getDate(); }
+    function today() { return ymd(new Date()); }
+    function yesterday() { var d = new Date(); d.setDate(d.getDate() - 1); return ymd(d); }
+    function load() { try { return JSON.parse(localStorage.getItem(SKEY)) || { last: '', n: 0, max: 0 }; } catch (e) { return { last: '', n: 0, max: 0 }; } }
+    function mark() {
+      try {
+        var st = load(), t = today();
+        if (st.last === t) return;
+        st.n = (st.last === yesterday()) ? st.n + 1 : 1;
+        st.last = t; st.max = Math.max(st.max || 0, st.n);
+        localStorage.setItem(SKEY, JSON.stringify(st));
+      } catch (e) {}
+    }
+    function html() {
+      var st = load(), t = today(), msg, sub = '', on = false;
+      if (st.last === t) { on = true; msg = '🔥 ' + st.n + '日連続で頑張ってるよ！'; if (st.max > st.n) sub = 'これまででいちばん長いのは ' + st.max + '日'; }
+      else if (st.last === yesterday()) { on = true; msg = '🔥 きのうまで ' + st.n + '日連続！'; sub = '今日も1問やると、連続がのびるよ'; }
+      else if (st.max > 0) { msg = 'おかえり！今日からまた、はじめよう'; sub = 'これまででいちばん長いのは ' + st.max + '日。休んでもだいじょうぶ'; }
+      else { msg = '今日の1問から、はじめよう'; sub = '毎日1問でもOK。続けた日数がここに出るよ'; }
+      return '<div class="hh-streak' + (on ? ' on' : '') + '">' + msg + (sub ? '<small>' + sub + '</small>' : '') + '</div>';
+    }
+    function ensureStyle() {
+      if (document.getElementById('hh-streak-css')) return;
+      var s = document.createElement('style'); s.id = 'hh-streak-css';
+      s.textContent = '#hh-streak{box-sizing:border-box;max-width:760px;margin:8px auto;padding:0 12px;font-family:inherit}' +
+        '#hh-streak .hh-streak{padding:9px 14px;border-radius:12px;border:2px solid #cfd8d3;background:#fff;color:#223;font-weight:700;line-height:1.6;font-size:.95rem;text-align:center}' +
+        '#hh-streak .hh-streak small{display:block;font-weight:400;color:#556;font-size:.8rem}' +
+        '#hh-streak .hh-streak.on{border-color:#e8a33d;background:#fff7e6;color:#3a2a00}' +
+        '#hh-streak .hh-streak.on small{color:#6b5a30}';
+      (document.head || document.documentElement).appendChild(s);
+    }
+    function render() {
+      if (!document.body) return;
+      ensureStyle();
+      var e = document.getElementById('hh-streak');
+      if (!e) { e = document.createElement('div'); e.id = 'hh-streak'; document.body.insertBefore(e, document.body.firstChild); }
+      e.innerHTML = html();
+    }
+    window.hhStudied = function () { mark(); render(); };
+    if (CLICK) {
+      document.addEventListener('click', function (ev) {
+        var t = ev.target;
+        if (t && t.closest && t.closest('.opt, .choice, [data-act="pick"], [data-act="check"]')) window.hhStudied();
+      }, true);
+    }
+    render();
+  } catch (e) {}
 })();
 </script>
 </body>

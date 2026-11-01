@@ -215,7 +215,7 @@ function sortStage(w){
   card.appendChild(give); card.appendChild(tail);
   app.appendChild(card); draw();
 }
-function record(w,ok){
+function record(w,ok){ window.hhStudied&&window.hhStudied();
   var today=dayNum(), r=st.words[w.id];
   if(!r){ r={step:0,due:today,first:today}; st.words[w.id]=r;
     if(ok){ r.step=1; r.due=today+STEPS[1]; } else { r.step=0; r.due=today+1; }
@@ -227,6 +227,60 @@ function record(w,ok){
 fetch('data/jukugo.json').then(function(r){return r.json();}).then(function(d){
   WORDS=d; d.forEach(function(w){byId[w.id]=w;}); home();
 }).catch(function(){ app.textContent='熟語データを読みこめませんでした。ページを開きなおしてください。'; });
+})();
+</script>
+<!-- 連続日数（毎日の学習記録）。端末内（localStorage）だけに保存 -->
+<script>
+(function () {
+  try {
+    var SKEY = 'hh-streak-v1', CLICK = false;
+    function ymd(d) { return d.getFullYear() + '-' + (d.getMonth() + 1) + '-' + d.getDate(); }
+    function today() { return ymd(new Date()); }
+    function yesterday() { var d = new Date(); d.setDate(d.getDate() - 1); return ymd(d); }
+    function load() { try { return JSON.parse(localStorage.getItem(SKEY)) || { last: '', n: 0, max: 0 }; } catch (e) { return { last: '', n: 0, max: 0 }; } }
+    function mark() {
+      try {
+        var st = load(), t = today();
+        if (st.last === t) return;
+        st.n = (st.last === yesterday()) ? st.n + 1 : 1;
+        st.last = t; st.max = Math.max(st.max || 0, st.n);
+        localStorage.setItem(SKEY, JSON.stringify(st));
+      } catch (e) {}
+    }
+    function html() {
+      var st = load(), t = today(), msg, sub = '', on = false;
+      if (st.last === t) { on = true; msg = '🔥 ' + st.n + '日連続で頑張ってるよ！'; if (st.max > st.n) sub = 'これまででいちばん長いのは ' + st.max + '日'; }
+      else if (st.last === yesterday()) { on = true; msg = '🔥 きのうまで ' + st.n + '日連続！'; sub = '今日も1問やると、連続がのびるよ'; }
+      else if (st.max > 0) { msg = 'おかえり！今日からまた、はじめよう'; sub = 'これまででいちばん長いのは ' + st.max + '日。休んでもだいじょうぶ'; }
+      else { msg = '今日の1問から、はじめよう'; sub = '毎日1問でもOK。続けた日数がここに出るよ'; }
+      return '<div class="hh-streak' + (on ? ' on' : '') + '">' + msg + (sub ? '<small>' + sub + '</small>' : '') + '</div>';
+    }
+    function ensureStyle() {
+      if (document.getElementById('hh-streak-css')) return;
+      var s = document.createElement('style'); s.id = 'hh-streak-css';
+      s.textContent = '#hh-streak{box-sizing:border-box;max-width:760px;margin:8px auto;padding:0 12px;font-family:inherit}' +
+        '#hh-streak .hh-streak{padding:9px 14px;border-radius:12px;border:2px solid #cfd8d3;background:#fff;color:#223;font-weight:700;line-height:1.6;font-size:.95rem;text-align:center}' +
+        '#hh-streak .hh-streak small{display:block;font-weight:400;color:#556;font-size:.8rem}' +
+        '#hh-streak .hh-streak.on{border-color:#e8a33d;background:#fff7e6;color:#3a2a00}' +
+        '#hh-streak .hh-streak.on small{color:#6b5a30}';
+      (document.head || document.documentElement).appendChild(s);
+    }
+    function render() {
+      if (!document.body) return;
+      ensureStyle();
+      var e = document.getElementById('hh-streak');
+      if (!e) { e = document.createElement('div'); e.id = 'hh-streak'; document.body.insertBefore(e, document.body.firstChild); }
+      e.innerHTML = html();
+    }
+    window.hhStudied = function () { mark(); render(); };
+    if (CLICK) {
+      document.addEventListener('click', function (ev) {
+        var t = ev.target;
+        if (t && t.closest && t.closest('.opt, .choice, [data-act="pick"], [data-act="check"]')) window.hhStudied();
+      }, true);
+    }
+    render();
+  } catch (e) {}
 })();
 </script>
 </body>
